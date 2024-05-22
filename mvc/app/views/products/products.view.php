@@ -1,1 +1,1 @@
-<h1>Products view</h1>
+<h1>Products view file</h1>

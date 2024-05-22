@@ -1,7 +1,7 @@
 <?php 
 
-function show($stuff){
-    echo "<pre>";
-    print_r($stuff);
-    echo "</pre>";
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    define('ROOT', 'http://localhost/testphp/mvc/public');
+}else{
+    define('ROOT', 'https://info.ghdigitalservices.com.br');
 }
