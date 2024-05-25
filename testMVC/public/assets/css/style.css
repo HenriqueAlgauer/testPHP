@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding: 1rem;
+  margin-bottom: 80px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav .logo {
+  width: 80px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  text-transform: uppercase;
+  color: #00689f;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease-in;
+  border-radius: 3px;
+}
+
+nav ul li a:hover {
+  background-color: #00689f;
+  color: #fff;
+}
+
+nav .nav-button,
+.nav-button {
+  padding: 20px;
+  border-radius: 50px;
+  border: 2px #00689f solid;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+nav #register,
+.nav-button {
+  background-color: #fff;
+  transition: 0.2s ease-in;
+  color: #00689f;
+}
+
+nav #login {
+  background-color: #00689f;
+  color: #fff;
+  transition: 0.2s ease-in;
+}
+
+nav #login:hover {
+  background-color: #fff;
+  color: #00689f;
+}
+
+nav #register:hover {
+  background-color: #00689f;
+  color: #fff;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  min-width: 70% !important;
+  margin: 0 auto;
+}
+
+hr {
+  margin: 40px 0px;
+  border: 1px solid #00689f;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-img {
+  width: 35%;
+}
+
+.hero-title {
+  width: 65%;
+  font-size: 40px;
+}
+
+.h1-title {
+  font-size: 60px;
+  text-transform: uppercase;
+  background: #ffffff;
+  background: linear-gradient(to top, #ffffff 0%, #00689f 64%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.h2-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: #1b89c4be;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.blur {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+}
+
+footer {
+  color: #9888d3;
+  text-align: center;
+  padding: 1rem;
+}

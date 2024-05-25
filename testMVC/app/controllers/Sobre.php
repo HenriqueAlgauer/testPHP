@@ -1,9 +1,10 @@
 <?php 
 
-class _404{
+class Sobre{
 
     use Controller;
+
     public function index(){
-        echo "404 page not found controller";
+        $this->view('sobre');
     }
 }
