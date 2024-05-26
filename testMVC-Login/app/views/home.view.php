@@ -26,7 +26,17 @@
                     <button type="button" class="nav-button" id="register">
                         Registrar
                     </button>
+                    <?php
+                    if(empty($_SESSION['LOGIN'])){
+                        $t = '';
+                    }else{
+                        $t = $_SESSION['LOGIN']->login;
+                        echo $t;
+                    }
+                    ?>
+                    <div></div>
                 </div>
+
             </div>
             <div class="hero-img">
                 <img src="<?=ROOT?>/assets/img/card.png" alt="" />
@@ -85,3 +95,7 @@
 </body>
 
 </html>
+
+<?php 
+
+    

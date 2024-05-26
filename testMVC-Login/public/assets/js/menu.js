@@ -8,7 +8,7 @@ function mostrar() {
       <li><a href="http://localhost/testphp/testMVC/public/sobre">Sobre</a></li>
   </ul>
   <div>
-      <a href="http://localhost/testphp/testMVC/public/login">
+      <a href="http://localhost/testphp/testMVC-Login/public/login">
         <button type="button" class="nav-button" id="login">Login</button>
       </a>
       <a href="http://localhost/testphp/testMVC/public/login">

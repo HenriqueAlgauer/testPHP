@@ -9,7 +9,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBDRIVER', '');
     define('DBPORT', '3306');
 
-    define('ROOT', 'http://localhost/testphp/testMVC/public');
+    define('ROOT', 'http://localhost/testphp/testMVC-Login/public');
 }else{
     define('ROOT', 'https://info.ghdigitalservices.com.br');
     define('DBNAME', 'my_db');

@@ -3,11 +3,28 @@
 class User {
 
     use Model;
-
-    protected $table = 'users';
+    protected $table = 'usuario';
 
     protected $allowedColumns = [
-        'name',
-        'age',
+        'login',
+        'senha'
     ];
+
+    public function validate($data){
+        $this->errors = [];
+
+        if(empty($data['login'])){
+            $this->errors['login'] = "Insira o nome de usuário";
+        }
+
+        if(empty($data['senha'])){
+            $this->errors['senha'] = "Insira a senha válida";
+        }
+
+        if(empty($this->errors)){
+            return true;
+        }
+
+        return false;
+    }
 }

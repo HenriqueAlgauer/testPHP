@@ -8,6 +8,7 @@ Trait Model{
     protected $offset = 0;
     protected $order_type= "desc";
     protected $order_column= 'id';
+    public $errors = [];
 
 
     public function findAll(){
@@ -82,7 +83,6 @@ Trait Model{
 
 
     public function update($id, $data, $id_column = 'id'){
-        //$allowedColumns = [];
 
         /*remove unwanted data */
         if(!empty($this->allowedColumns)){
