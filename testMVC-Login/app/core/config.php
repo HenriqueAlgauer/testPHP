@@ -2,12 +2,12 @@
 
 if($_SERVER['SERVER_NAME'] == 'localhost'){
     // databse config
-    define('DBNAME', 'my_db');
+    define('DBNAME', 'loja');
     define('DBHOST', 'localhost');
     define('DBUSER', 'root');
-    define('DBPASS', '');
+    define('DBPASS', '1234');
     define('DBDRIVER', '');
-    define('DBPORT', '3307');
+    define('DBPORT', '3306');
 
     define('ROOT', 'http://localhost/testphp/testMVC/public');
 }else{
