@@ -28,7 +28,7 @@
                     </button>
                     <?php
                     if(empty($_SESSION['LOGIN'])){
-                        $t = '';
+                        $t = 'USER';
                     }else{
                         $t = $_SESSION['LOGIN']->login;
                         echo $t;

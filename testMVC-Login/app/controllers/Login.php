@@ -1,6 +1,5 @@
 <?php 
 
-
 class Login {
 
     use Controller;
@@ -12,20 +11,23 @@ class Login {
 
             $user = new User;
             $arr['login'] = $_POST['login'];
+            $login = $_POST['login'];
 
             $row = $user->first($arr);
             
             if($row){
                 if($row->senha === $_POST['senha']){
                     $_SESSION['LOGIN'] = $row;
-                    redirect('home');
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['username'] = $login;
+                    redirect('dashboard');
                 }
             }
 
-            print_r($_SESSION['LOGIN']);
+            // print_r($_SESSION['LOGIN']);
                         
             $user->errors['login'] = "Login ou senha inváilo";
-            show($row);
+            // show($row);
             
             $data['errors'] = $user->errors;
         }

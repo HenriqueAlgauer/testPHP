@@ -11,7 +11,7 @@ function mostrar(title, img, text) {
   const codHTML = `
         <div class="content-box">
         <div class="content-image">
-        <img src="http://localhost/testphp/testMVC/public/assets/img/${img}.png" alt="" />
+        <img src="http://localhost/testphp/testMVC-Login/public/assets/img/${img}.png" alt="" />
         </div>
         <div class="content-box-text blur">
         <h3>${title}</h3>
