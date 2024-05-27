@@ -5,10 +5,12 @@ class Logout {
     use Controller;
 
     public function index(){
-        unset($_SESSION['username']);
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
         unset($_SESSION['loggedin']);
-        
-        $this->view('home');
+        session_destroy();
+
+        $this->view('logout');
     }
 
 }
