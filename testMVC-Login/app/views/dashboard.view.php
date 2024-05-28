@@ -15,7 +15,20 @@
     <header id='menu'></header>
     <main>
         <h1>Dashboard</h1>
+        <div class="interacoes">
+    
+           <br><br>
+            <a href="<?=ROOT?>/produto">Clique aqui para acessar a tela de produtos</a>
+    
+            <br><br>
+            <a href="<?=ROOT?>/venda">Clique aqui para acessar a tela de Vendas</a>
+    
+            <br><br>
+            <a href="<?=ROOT?>/financeiro">Clique aqui para acessar a tela de Financeiro</a>
+        </div>
     </main>
+
+
     <footer id='footer'></footer>
     <script src="<?=ROOT?>/assets/js/menu.js"></script>
     <script src="<?=ROOT?>/assets/js/footer.js"></script>
