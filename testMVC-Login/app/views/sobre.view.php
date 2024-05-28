@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header id="menu"></header>
     <main class="main">
+        <?=menu()?>
         <section class="hero">
             <div class="hero-title">
                 <h1 class="h1-title">

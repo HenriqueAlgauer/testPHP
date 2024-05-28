@@ -12,17 +12,17 @@
 </head>
 
 <body>
-    <header id='menu'></header>
     <main>
+        <?=menu()?>
         <h1>Dashboard</h1>
         <div class="interacoes">
-    
-           <br><br>
+
+            <br><br>
             <a href="<?=ROOT?>/produto">Clique aqui para acessar a tela de produtos</a>
-    
+
             <br><br>
             <a href="<?=ROOT?>/venda">Clique aqui para acessar a tela de Vendas</a>
-    
+
             <br><br>
             <a href="<?=ROOT?>/financeiro">Clique aqui para acessar a tela de Financeiro</a>
         </div>
