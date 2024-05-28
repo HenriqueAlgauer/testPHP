@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header id='menu'></header>
     <main>
+        <?=menu()?>
         <section class="hero">
             <div class="hero-title">
                 <h1 class="h1-title">
@@ -22,19 +22,20 @@
                 </h1>
                 <h4>desenvolvimento de sistemas</h4>
                 <div class="main-button">
-                    <button type="button" class="nav-button" id="login">Login</button>
-                    <button type="button" class="nav-button" id="register">
-                        Registrar
-                    </button>
                     <?php
+                    
                     if(empty($_SESSION['LOGIN'])){
-                        $t = 'USER';
+                    echo "
+                    <button type='button' class='nav-button' id='login'>Login</button>
+                    <button type='button' class='nav-button' id='register'>Registrar</button>
+                    ";
                     }else{
-                        $t = $_SESSION['LOGIN']->login;
-                        echo $t;
+                    $t = $_SESSION['LOGIN']->login;
+                    echo "
+                    <h2>Olá, $t</h2>
+                    ";
                     }
                     ?>
-                    <div></div>
                 </div>
 
             </div>
@@ -90,7 +91,7 @@
         </section>
     </main>
     <footer id='footer'></footer>
-    <script src="<?=ROOT?>/assets/js/menu.js"></script>
+    <!-- <script src="<?=ROOT?>/assets/js/menu.js"></script> -->
     <script src="<?=ROOT?>/assets/js/footer.js"></script>
 </body>
 
