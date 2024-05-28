@@ -127,4 +127,11 @@ Trait Model{
         print_r($result);
         echo "</pre>";
     }
+
+    public function searchByDescription($description)
+    {
+        $query = "SELECT * FROM produtos WHERE nome LIKE :description";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
 }

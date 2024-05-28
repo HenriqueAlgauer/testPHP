@@ -136,3 +136,20 @@ footer {
   text-align: center;
   padding: 1rem;
 }
+
+
+/*Produtos - Style Abaixo*/
+
+table,td {
+  width: 46.875rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.internalNav{
+  width: 46.875rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
