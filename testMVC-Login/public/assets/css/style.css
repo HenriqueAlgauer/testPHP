@@ -46,8 +46,7 @@ nav ul li a:hover {
   color: #fff;
 }
 
-nav .nav-button,
-.nav-button {
+nav .nav-button {
   padding: 20px;
   border-radius: 50px;
   border: 2px #00689f solid;
@@ -62,13 +61,15 @@ nav #register,
   color: #00689f;
 }
 
-nav #login {
+nav #login,
+nav #logout {
   background-color: #00689f;
   color: #fff;
   transition: 0.2s ease-in;
 }
 
-nav #login:hover {
+nav #login:hover,
+nav #logout:hover {
   background-color: #fff;
   color: #00689f;
 }
@@ -76,6 +77,12 @@ nav #login:hover {
 nav #register:hover {
   background-color: #00689f;
   color: #fff;
+}
+
+.header-button {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 main {
@@ -137,16 +144,16 @@ footer {
   padding: 1rem;
 }
 
-
 /*Produtos - Style Abaixo*/
 
-table,td {
+table,
+td {
   width: 46.875rem;
   border: 1px solid black;
   text-align: center;
 }
 
-.internalNav{
+.internalNav {
   width: 46.875rem;
   height: 2.5rem;
   display: flex;

@@ -15,46 +15,38 @@ function redirect($path){
 }
 
 function menu(){
-    if(empty($_SESSION['LOGIN'])){
-        echo "
-        <header>
+    echo "
+    <header>
         <nav>
         <ul>
         <li><img class='logo' src='http://localhost/testphp/testMVC-Login/public/assets/img/php3d.png' alt='' /></li>
             <li><a href='http://localhost/testphp/testMVC-Login/public/'>Home</a></li>
             <li><a href='#'>naosei</a></li>
             <li><a href='http://localhost/testphp/testMVC-Login/public/sobre'>Sobre</a></li>
-        </ul>
-        <div>
+        </ul>";
+    if(empty($_SESSION['LOGIN'])){
+        echo "
+        <div class='header-button'>
             <a href='http://localhost/testphp/testMVC-Login/public/login'>
               <button type='button' class='nav-button' id='login'>Login</button>
             </a>
             <a href='http://localhost/testphp/testMVC-Login/public/register'>
               <button type='button' class='nav-button' id='register'>Registrar</button>
             </a>
-        </div>
-      </nav>
-      </header>
         ";
     }else{
         $nome = $_SESSION['LOGIN']->login;
         echo "
-        <header>
-        <nav>
-        <ul>
-        <li><img class='logo' src='http://localhost/testphp/testMVC-Login/public/assets/img/php3d.png' alt='' /></li>
-            <li><a href='http://localhost/testphp/testMVC-Login/public/'>Home</a></li>
-            <li><a href='#'>naosei</a></li>
-            <li><a href='http://localhost/testphp/testMVC-Login/public/sobre'>Sobre</a></li>
-        </ul>
-        <div>
+        <div class='header-button'>
         <h2>Olá, $nome</h2>
         <a href='http://localhost/testphp/testMVC-Login/public/logout'>
         <button type='button' class='nav-button' id='logout'>Logout</button>
         </a>
+        ";
+    }
+    echo "
         </div>
       </nav>
       </header>
-        ";
-    }
+    ";
 }

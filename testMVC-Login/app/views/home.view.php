@@ -21,23 +21,6 @@
                     interno de loja
                 </h1>
                 <h4>desenvolvimento de sistemas</h4>
-                <div class="main-button">
-                    <?php
-                    
-                    if(empty($_SESSION['LOGIN'])){
-                    echo "
-                    <button type='button' class='nav-button' id='login'>Login</button>
-                    <button type='button' class='nav-button' id='register'>Registrar</button>
-                    ";
-                    }else{
-                    $t = $_SESSION['LOGIN']->login;
-                    echo "
-                    <h2>Olá, $t</h2>
-                    ";
-                    }
-                    ?>
-                </div>
-
             </div>
             <div class="hero-img">
                 <img src="<?=ROOT?>/assets/img/card.png" alt="" />
