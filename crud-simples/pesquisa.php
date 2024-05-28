@@ -70,7 +70,7 @@
                                 <td>$telefone</td>
                                 <td>$email</td>
                                 <td>$data</td>
-                                <td><a href='#' class='btn btn-success btn-sm'>Editar</a></td>
+                                <td><a href='paginaEdicao.php?id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a></td>
                                 <td><a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>
 
                             </tr>";

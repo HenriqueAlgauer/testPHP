@@ -13,7 +13,7 @@
         <div class="row">
             <h1>Empresa</h1>
             <p>Este é um sistema simplificado para estudo de CRUD com PHP</p>
-            <a class="btn btn-primary" href="signup.php">Cadastro</a>
+            <a class="btn btn-primary" href="paginaCadastro.php">Cadastro</a>
             <a class="btn btn-primary" href="pesquisa.php">Pesquisar</a>
         </div>
     </div>
