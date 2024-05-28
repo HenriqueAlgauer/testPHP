@@ -26,7 +26,7 @@ function menu(){
         </ul>";
     if(empty($_SESSION['LOGIN'])){
         echo "
-        <div class='header-button'>
+        <div>
             <a href='http://localhost/testphp/testMVC-Login/public/login'>
               <button type='button' class='nav-button' id='login'>Login</button>
             </a>
