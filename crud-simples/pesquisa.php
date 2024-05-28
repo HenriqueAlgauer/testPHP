@@ -70,13 +70,13 @@
                                 <td>$telefone</td>
                                 <td>$email</td>
                                 <td>$data</td>
-                                <td></td>
+                                <td><a href='#' class='btn btn-success btn-sm'>Editar</a></td>
+                                <td><a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>
 
                             </tr>";
                         }
-                    ?>
-                    <a href="#">Editar</a>
-                    <a href="#">Excluir</a>
+                        ?>
+
                 </tbody>
             </table>
         </div>
