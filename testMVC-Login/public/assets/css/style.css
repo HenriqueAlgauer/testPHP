@@ -136,6 +136,7 @@ hr {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.4px);
   -webkit-backdrop-filter: blur(3.4px);
+  max-width: 750px;
 }
 
 footer {
@@ -147,16 +148,55 @@ footer {
 /*Produtos - Style Abaixo*/
 
 table,
-td {
+td table {
   width: 46.875rem;
   border: 1px solid black;
   text-align: center;
 }
 
 .internalNav {
-  width: 46.875rem;
-  height: 2.5rem;
+  td {
+    border: 1px solid black;
+    border-collapse: separate;
+  }
+
+  tr {
+    height: 2rem;
+    text-align: center;
+  }
+
+  .internalNav {
+    width: 46.875rem;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  align-items: center;
+}
+
+td:last-child {
+  max-width: 2rem;
+}
+
+.funcoes {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.botao {
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.botaoEditar {
+  background-color: green;
+}
+
+.botaoExcluir {
+  background-color: red;
 }

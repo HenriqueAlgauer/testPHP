@@ -9,6 +9,7 @@ class Produtos{
     protected $table = 'produtos';
 
     protected $allowedColumns = [
+        'id',
         'nome',
         'preco',
         'estoque'
