@@ -27,7 +27,7 @@
             <button type="submit">Adicionar Produto</button>
         </div>
 
-        <form method="post" action="<?= ROOT ?>/produto_editar">
+        <form method="post">
             <label for="nomeProduto">Nome</label><br>
             <input type="text" name="nome" id="nome" value="<?= $produto->nome ?>">
             <br><br>
@@ -35,7 +35,7 @@
             <input type="number" step="0.01" min="0" name="preco" id="preco" value="<?= $produto->preco ?>">
             <br><br>
             <label for="nomeProduto">Estoque</label><br>
-            <input type="number" name="Estoque" id="estoque" value="<?= $produto->estoque ?>">
+            <input type="number" name="estoque" id="estoque" value="<?= $produto->estoque ?>">
 
             <button type="submit">Enviar Alterações</button>
         </form>

@@ -19,16 +19,13 @@ class Produto_editar
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-
-            $produto_editar = new Produtos;
-
             $data['id'] = $_GET['id'];
-            
-            $values['nome'] = $_POST['nome'];
 
-            $values['preco'] = $_POST['preco'];
-
-            $values['estoque'] = $_POST['estoque'];
+            $values = array(
+                'nome' => $_POST['nome'],
+                'preco' => floatval($_POST['preco']),
+                'estoque' => intval($_POST['estoque'])
+            );
 
             $result = $produto_editar->update($data, $values);
 
