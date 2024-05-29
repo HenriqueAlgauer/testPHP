@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header id="menu"></header>
     <main class="main">
+        <?=menu()?>
         <section class="hero">
             <div class="hero-title">
                 <h1 class="h1-title">
@@ -32,7 +32,17 @@
             <div>
                 <h2 class="h2-title">FUNCIONALIDADES DO SISTEMA</h2>
             </div>
-            <div id="container-func"></div>
+            <?php 
+            $t1 =
+            "Registro completo das vendas realizadas, com funcionalidades para adicionar novas vendas, consultar registros existentes, editar detalhes e excluir registros quando necessário";
+            $t2 =
+            "Permite a inserção, visualização, atualização e exclusão de produtos no sistema. É possível gerenciar informações detalhadas como nome, descrição, preço e quantidade em estoque.";
+            $t3 =
+            "Monitoramento das finanças do negócio, incluindo entradas e saídas. As operações de CRUD garantem que todas as transações financeiras sejam devidamente registradas e acessíveis para consultas futuras.";
+            contentBox("CADASTRO DE PRODUTOS", "func3", $t1);
+            contentBox("CADASTRO DE PRODUTOS", "func1", $t2);
+            contentBox("CADASTRO DE PRODUTOS", "func2", $t3);
+            ?>
         </section>
     </main>
     <footer id='footer'></footer>

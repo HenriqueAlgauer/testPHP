@@ -9,11 +9,11 @@ const t3 =
 
 function mostrar(title, img, text) {
   const codHTML = `
-        <div class="content-box">
-        <div class="content-image">
-        <img src="http://localhost/testphp/testMVC-Login/public/assets/img/${img}.png" alt="" />
+        <div class='content-box'>
+        <div class='content-image'>
+        <img src='http://localhost/testphp/testMVC-Login/public/assets/img/${img}.png' alt='' />
         </div>
-        <div class="content-box-text blur">
+        <div class='content-box-text blur'>
         <h3>${title}</h3>
         <p>
         ${text}

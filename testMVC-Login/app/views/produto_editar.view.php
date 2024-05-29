@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header id='menu'></header>
     <main>
+        <?=menu()?>
 
         <div class="blur">
             <h1>Produtos Editar</h1>
@@ -39,7 +39,7 @@
 
             <button type="submit">Enviar Alterações</button>
         </form>
-        
+
         <?php 
             var_dump($result);
         ?>

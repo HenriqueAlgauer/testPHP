@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header id='menu'></header>
     <main>
+        <?=menu()?>
 
         <div class="blur">
             <h1>Produtos Excluir</h1>
