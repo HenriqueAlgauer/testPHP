@@ -1,9 +1,16 @@
 body {
   display: flex;
   flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
   min-height: 100vh;
 }
 
+@media (max-width: 1300px) {
+  body {
+    width: 90%;
+  }
+}
 header {
   padding: 1rem;
   margin-bottom: 80px;
@@ -11,7 +18,7 @@ header {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -88,8 +95,7 @@ nav #register:hover {
 main {
   flex: 1;
   padding: 2rem;
-  min-width: 70% !important;
-  margin: 0 auto;
+  width: 100%;
 }
 
 hr {
@@ -100,7 +106,8 @@ hr {
 .hero {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .hero-img {
@@ -108,8 +115,11 @@ hr {
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   width: 65%;
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 
 .h1-title {

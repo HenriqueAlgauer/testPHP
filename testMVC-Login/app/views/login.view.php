@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?=ROOT?>/assets/img/php3d.png" type="image/x-icon" />
     <title>Login</title>
-    <!-- <link rel="stylesheet" href="<?=ROOT?>/assets/css/reset.css" />
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/reset.css" />
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/home.css" />
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/style.css" /> -->
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/style.css" />
 </head>
 
 <body>
@@ -35,7 +35,7 @@
         <a href="<?=ROOT?>">Home</a>
         <a href="<?=ROOT?>/register">Cadastre-se</a>
     </form>
-    <footer id='footer'></footer>
+    <?=footer()?>
 </body>
 
 </html>

@@ -7,13 +7,13 @@
     <link rel="shortcut icon" href="<?=ROOT?>/assets/img/php3d.png" type="image/x-icon" />
     <title>Home</title>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/reset.css" />
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/home.css" />
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/style.css" />
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/home.css" />
 </head>
 
 <body>
+    <?=menu()?>
     <main>
-        <?=menu()?>
         <section class="hero">
             <div class="hero-title">
                 <h1 class="h1-title">
@@ -40,11 +40,11 @@
                 </p>
             </div>
             <div class="tec-container">
-                <div>
+                <div class="tec=box">
                     <img class="tec-img" src="<?=ROOT?>/assets/img/html.png" alt="" />
                     <img class="tec-img" src="<?=ROOT?>/assets/img/css.png" alt="" />
                 </div>
-                <div>
+                <div class="tec=box">
                     <img class="tec-img" src="<?=ROOT?>/assets/img/mysql3d.png" alt="" />
                     <img class="tec-img" src="<?=ROOT?>/assets/img/php.png" alt="" />
                 </div>
@@ -73,9 +73,7 @@
             </div>
         </section>
     </main>
-    <footer id='footer'></footer>
-    <!-- <script src="<?=ROOT?>/assets/js/menu.js"></script> -->
-    <script src="<?=ROOT?>/assets/js/footer.js"></script>
+    <?=footer()?>
 </body>
 
 </html>

@@ -12,8 +12,8 @@
 </head>
 
 <body>
+    <?=menu()?>
     <main class="main">
-        <?=menu()?>
         <section class="hero">
             <div class="hero-title">
                 <h1 class="h1-title">
@@ -45,10 +45,7 @@
             ?>
         </section>
     </main>
-    <footer id='footer'></footer>
-    <script src="<?=ROOT?>/assets/js/menu.js"></script>
-    <script src="<?=ROOT?>/assets/js/footer.js"></script>
-    <script src="<?=ROOT?>/assets/js/contentBox.js"></script>
+    <?=footer()?>
 </body>
 
 </html>

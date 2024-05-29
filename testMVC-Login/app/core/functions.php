@@ -66,3 +66,11 @@ function contentBox($title, $img, $text){
     </div>
     ";
 }
+
+function footer(){
+    echo "
+    <footer id='footer'>
+        <p>&copy; PROJETO PHP</p>
+    </footer>
+    ";
+}

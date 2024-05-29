@@ -19,8 +19,8 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBDRIVER', '');
 }
 
-define('APP_NAME', 'My Website');
-define('APP_DESC', 'The desc');
+define('APP_NAME', 'Projeto faculdade de PHP');
+define('APP_DESC', 'Esse projeto ');
 
 /* true means show errors */
 define('DEBUG', true);
