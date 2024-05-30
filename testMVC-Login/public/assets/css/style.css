@@ -176,13 +176,10 @@ td table {
   }
 
   .internalNav {
-    width: 46.875rem;
-    height: 2.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    max-width: 46.875rem;
+    max-height: 2.5rem;
+    
   }
-  align-items: center;
 }
 
 td:last-child {

@@ -26,15 +26,18 @@ class Produto_editar
                 'preco' => floatval($_POST['preco']),
                 'estoque' => intval($_POST['estoque'])
             );
-
-            $result = $produto_editar->update($data, $values);
+            
+            $result = $produto_editar->update($data['id'], $values);
 
             if ($result !== false && is_array($result) && count($result) > 0) {
-                $this->view('produtos_editar', ['result' => $result]);
+                
+                header("Location: " . ROOT . "/produto");
+                exit; 
             } else {
-
-                $this->view('produtos_editar', ['result' => $result]);
+                header("Location: " . ROOT . "/produto");
             }
+
+
             
         }
     }
