@@ -24,6 +24,7 @@
                 <button type="submit">Buscar</button>
             </form>
             <button type="submit">Adicionar Produto</button>
+            <a href="<?=ROOT?>/produto">Voltar pagina</a>
         </div>
 
         <form method="post">

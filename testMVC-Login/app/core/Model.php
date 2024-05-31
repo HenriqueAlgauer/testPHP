@@ -130,7 +130,7 @@ Trait Model{
 
     public function searchByDescription($description)
     {
-        $query = "SELECT * FROM produtos WHERE nome LIKE :description";
+        $query = "SELECT * FROM $this->table WHERE nome LIKE :description";
         $data = [':description' => "%$description%"];
         return $this->query($query, $data);
     }
