@@ -23,10 +23,23 @@
                 <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto">
                 <button type="submit">Buscar</button>
             </form>
-            <button type="submit">Adicionar Produto</button>
+            <br>
+            <a href="<?=ROOT?>/produto">Voltar pagina</a>
 
-            <?php show($value)?>
+            <br><br>
         </div>
+
+        <form method="POST">
+            <label for="opcao">Deseja Realmente Exluir esse Registro?</label><br><br>
+            <label for="opcao0">Sim</label>
+            <input type="radio" name="opcao" id="opcao" value="0"><br><br>
+            <label for="opcao0">Não</label>
+            <input type="radio" name="opcao" id="opcao" value="1">
+            <br><br>
+            <button type="submit">Confirmar Opcao</button>
+        </form>
+
+
     </main>
 
     <?=footer()?>

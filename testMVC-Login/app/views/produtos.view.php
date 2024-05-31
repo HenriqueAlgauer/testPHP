@@ -23,6 +23,7 @@
                 <button type="submit">Buscar</button>
             </form>
             <a href="<?= ROOT ?>/produto_adicionar" id="botao" class="botao">Adicionar Produto</a>
+            <a href="<?= ROOT ?>/dashboard">Voltar Pagina</a>
         </div>
 
         <br><br>

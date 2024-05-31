@@ -9,11 +9,21 @@ class Produto_excluir
     {
         $produto_excluir = new Produtos;
 
-        $value = $_GET['id'];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            $opcao = $_POST['opcao']; 
 
-        $produto_excluir->delete($value);
+            $value = $_GET['id'];
 
+            if($opcao == 0){
+                $produto_excluir->delete($value);
+                
+                header("Location: " . ROOT . "/produto");
+            }else{
+                header("Location: " . ROOT . "/produto");
+            }
+        }
 
-        $this->view('produto_excluir', ['value' => $value]);
+        $this->view('produto_excluir');
     }
 }
