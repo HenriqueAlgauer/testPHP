@@ -5,7 +5,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBNAME', 'loja');
     define('DBHOST', 'localhost');
     define('DBUSER', 'root');
-    define('DBPASS', '1234');
+    define('DBPASS', 'hhma2005');
     define('DBDRIVER', '');
     define('DBPORT', '3306');
 
