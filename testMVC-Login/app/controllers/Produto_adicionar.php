@@ -17,6 +17,7 @@ class Produto_adicionar{
                 'estoque' => intval($_POST['estoque'])
             );
 
+            
             $produto_adicionar->insert($values);
 
             header("Location: " . ROOT . "/produto");

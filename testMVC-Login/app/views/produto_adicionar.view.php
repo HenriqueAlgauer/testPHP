@@ -27,18 +27,14 @@
 
         <form method="post">
 
-            <br><br>
-
             <label for="nomeProduto">Nome</label><br>
             <input type="text" name="nome" id="nome">
             <br><br>
             <label for="nomeProduto">Preco</label> <br>
-            <input type="number" step="0.01" min="0" name="preco" id="preco" >
+            <input type="number" step="0.01" min="0" name="preco" id="preco">
             <br><br>
             <label for="nomeProduto">Estoque</label><br>
             <input type="number" name="estoque" id="estoque">
-
-            <br><br>
 
             <button type="submit">Enviar Alterações</button>
         </form>

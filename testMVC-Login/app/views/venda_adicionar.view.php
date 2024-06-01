@@ -25,7 +25,7 @@
             <a href="<?=ROOT?>/venda">Voltar Pagina</a>
         </div>
 
-        <br><br>
+
 
         <form method="post">
 
@@ -57,14 +57,14 @@
                     <?php
                     if (isset($produtos) && is_array($produtos) && count($produtos) > 0) {
                         foreach ($produtos as $produto) { ?>
-                            <tr>
-                                <td><strong><?php echo $produto->id; ?></strong></td>
-                                <td><?php echo $produto->nome; ?></td>
-                                <td><?php echo $produto->preco; ?></td>
-                                <td><?php echo $produto->estoque; ?></td>
-                                <td><input type="number"></td>
-                                <td><button type="submit">Adicionar</button>
-                            </tr>
+                    <tr>
+                        <td><strong><?php echo $produto->id; ?></strong></td>
+                        <td><?php echo $produto->nome; ?></td>
+                        <td><?php echo $produto->preco; ?></td>
+                        <td><?php echo $produto->estoque; ?></td>
+                        <td><input type="number"></td>
+                        <td><button type="submit">Adicionar</button>
+                    </tr>
                     <?php }
                     } else {
                         echo "Nenhum produto encontrado.";
