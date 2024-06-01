@@ -31,11 +31,15 @@
 
             <br><br>
 
-            <label for="formaPagamento">Forma De Pagamento</label><br>
-            <input type="text" name="formaPagamento" id="formaPagamento">
+            <label for="formaPagamento">Forma De Pagamento</label>
+            <select name="formaPagamento" id="formaPagamento">
+                <option value="credito">Credito</option>
+                <option value="debito">Debito</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
             <br><br>
 
-            <label for="vendaItens">Selecione os produtos da venda</label>
+            <label for="vendaItens">procure por produtos</label>
             <form method="post" action="<?= ROOT ?>/venda_adicionar">
                 <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto">
                 <button type="submit">Buscar</button>
