@@ -14,9 +14,9 @@
 
 <body class="container">
     <?= menu() ?>
-    <main class="mx-auto align-items-center w-100">
+    <main class="mx-auto">
         <div class="text-center p-5">
-            <h1 class="mx-auto">Produtos</h1>
+            <h1>Produtos</h1>
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <div>
