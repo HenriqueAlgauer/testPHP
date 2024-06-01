@@ -1,0 +1,26 @@
+INSERT INTO produtos (nome, preco, estoque) VALUES
+('Produto A', 10.00, 100),
+('Produto B', 20.00, 50),
+('Produto C', 15.00, 75);
+
+-- Inserir dados na tabela de vendas
+INSERT INTO vendas (formaPagamento, valorTotal, dataVenda) VALUES
+('Cartão de Crédito', 200.00, '2024-05-01 10:00:00'),
+('Boleto', 150.00, '2024-05-02 11:00:00'),
+('Dinheiro', 300.00, '2024-05-03 12:00:00');
+
+-- Inserir dados na tabela de vendasItens
+INSERT INTO vendasItens (codVenda, codProduto, quantidade, valorItem) VALUES
+(1, 1, 5, 10.00),
+(1, 2, 3, 20.00),
+(2, 2, 2, 20.00),
+(2, 3, 5, 15.00),
+(3, 1, 10, 10.00);
+
+-- Inserir dados na tabela de financeiro
+INSERT INTO financeiro (tipo, nome, valor, data) VALUES
+('debito', 'Conta de Luz', 100.00, '2024-05-10'),
+('debito', 'Conta de Água', 50.00, '2024-05-15'),
+('credito', 'Venda 1', 200.00, '2024-05-01'),
+('credito', 'Venda 2', 150.00, '2024-05-02'),
+('credito', 'Venda 3', 300.00, '2024-05-03');
