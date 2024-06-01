@@ -19,7 +19,7 @@
         </div>
         <br><br>
         <div class="internalNav">
-            <form method="post" action="<?= ROOT ?>/produto">
+            <form method="post" action="<?=ROOT?>/produto">
                 <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto">
                 <button type="submit">Buscar</button>
             </form>
