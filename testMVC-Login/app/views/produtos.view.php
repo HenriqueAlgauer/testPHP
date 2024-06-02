@@ -54,7 +54,7 @@
                     <td><?php echo $produto->preco; ?></td>
                     <td><?php echo $produto->estoque; ?></td>
                     <td colspan="2">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-around">
                             <a href="<?= ROOT ?>/produto_editar?id=<?php echo $produto->id; ?>" id="botao"
                                 class="btn btn-primary">Editar</a>
                             <a href="<?= ROOT ?>/produto_excluir?id=<?php echo $produto->id; ?>" id="botao"
