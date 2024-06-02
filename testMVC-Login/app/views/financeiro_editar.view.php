@@ -19,6 +19,8 @@
         </div>
         <br><br>
 
+        <a href="<?= ROOT ?>/financeiros">Voltar Pagina</a>
+
         <form method="post">
             <label for="nomeFinanceiro">Nome</label><br>
             <input type="text" name="nome" id="nome" value="<?= $financeiro->nome ?>">
