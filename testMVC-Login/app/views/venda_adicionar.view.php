@@ -23,6 +23,10 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="text-center p-5">
             <h1>Adicionar Vendas</h1>
         </div>
+
+        <div class="text-center p-5">
+            <a href="<?=ROOT?>/venda">Voltar Pagina</a>
+        </div>
         <form id="vendaForm" class="p-5 d-flex justify-content-around align-items-start" method="post">
             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
             <div class="w-25">
