@@ -18,11 +18,6 @@
         <div class="text-center p-5">
             <h1>Produtos</h1>
         </div>
-
-        <div class="text-center p-5">
-            <a href="<?=ROOT?>/dashboard">Voltar Pagina</a>
-        </div>
-        
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <form method="post" action="<?= ROOT ?>/produto">
