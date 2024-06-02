@@ -1,12 +1,10 @@
 <?php
 
-class Venda_adicionar
-{
+class Venda_adicionar {
 
     use Controller;
 
-    public function index()
-    {
+    public function index() {
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             header("Location: login");
             exit();
@@ -49,7 +47,6 @@ class Venda_adicionar
 
             error_log('Dados da venda recebidos: ' . print_r($vendaData, true)); // Adicione esta linha para verificar os dados recebidos
 
-
             $vendaModel = new Vendas();
             $vendasItensModel = new VendasItens();
 
@@ -67,10 +64,12 @@ class Venda_adicionar
                     $quantidade = $item['quantidade'];
                     $valorItem = $item['valor'];
 
+                    error_log("Tentando inserir item da venda: Venda ID: $codVenda, Produto ID: $codProduto, Quantidade: $quantidade, Valor Item: $valorItem");
+
                     $result = $vendasItensModel->inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem);
 
                     if (!$result) {
-                        throw new Exception('Erro ao inserir item da venda.');
+                        throw new Exception('Erro ao inserir item da venda: Venda ID: ' . $codVenda . ', Produto ID: ' . $codProduto . ', Quantidade: ' . $quantidade . ', Valor Item: ' . $valorItem);
                     }
                 }
 
@@ -81,7 +80,9 @@ class Venda_adicionar
                     $vendaModel->rollback();
                 }
                 echo "Erro ao finalizar a venda: " . $e->getMessage();
+                error_log("Erro ao finalizar a venda: " . $e->getMessage());
             }
         }
     }
 }
+?>

@@ -1,13 +1,11 @@
 <?php
-
-class Vendas{
-
+class Vendas {
     use Model;
 
     protected $table = 'vendas';
 
     protected $allowedColumns = [
-        'idVenda',
+        'id',
         'formaPagamento',
         'valorTotal',
         'dataVenda'
@@ -59,3 +57,4 @@ class Vendas{
         }
     }
 }
+?>
