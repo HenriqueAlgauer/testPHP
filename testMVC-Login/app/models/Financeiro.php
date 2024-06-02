@@ -14,16 +14,16 @@ class Financeiro{
         'data'
     ];
 
-    public function validateRow($data){
-        $this->errors = [];
+    // public function validateRow($data){
+    //     $this->errors = [];
 
-        if(empty($data['id'])){
-            $this->errors   ['id'] = "nunhum registro encontrado";
-        }
+    //     if(empty($data['id'])){
+    //         $this->errors   ['id'] = "nunhum registro encontrado";
+    //     }
 
-        if(empty($this->errors)){
-            return true;
-        }
-        return false;
-    }
+    //     if(empty($this->errors)){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 }

@@ -31,5 +31,18 @@ class Financeiros
                 $this->view('financeiro', ['financeiro' => []]);
             }
         }
+
+        if (isset($_POST['id'])) {
+            $arr['id'] = $_POST['id'];
+            $t = $fin->first($arr);
+            
+            
+            if($t->tipo === 'debito'){
+                $fin->delete($arr['id']);
+            }else {
+                $_SESSION['error'] = "Só é possível excluir registros do tipo 'debito'.";
+            }
+
+        }
     }
 }
