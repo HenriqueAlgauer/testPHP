@@ -23,4 +23,4 @@ INSERT INTO financeiro (tipo, nome, valor, data) VALUES
 ('debito', 'Conta de Água', 50.00, '2024-05-15'),
 ('credito', 'Venda 1', 200.00, '2024-05-01'),
 ('credito', 'Venda 2', 150.00, '2024-05-02'),
-('credito', 'Venda 3', 300.00, '2024-05-03');
+('credito', 'Venda 3', 300.00, '2024-05-03');

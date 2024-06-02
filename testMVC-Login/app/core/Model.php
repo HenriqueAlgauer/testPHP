@@ -113,11 +113,10 @@ Trait Model{
 
     public function delete($id, $id_column = 'id'){
         $data[$id_column] = $id;
-        $query = "DELETE FROM $this->table WHERE $id_column = :id";
-        
-        $this->query($query, $data);
-        return false;
+        $query = "DELETE FROM $this->table WHERE $id_column = :$id_column"; // Certifique-se de que o placeholder corresponda ao nome da coluna
+        return $this->query($query, $data);
     }
+    
 
     function test(){
         $query = "select * from users";

@@ -2,7 +2,6 @@
 
 class Venda_excluir
 {
-
     use Controller;
 
     public function index()
@@ -13,28 +12,25 @@ class Venda_excluir
         }
 
         $venda_excluir = new Vendas;
-
         $vendaItens_excluir = new VendasItens;
+        $financeiro_excluir = new Financeiro;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $opcao = $_POST['opcao'];
-
-            $value = ['id' => $_GET['id']];
-
-            $vendasItensAssociadas['id'] = $vendaItens_excluir->where($value);
-
+            $value =  $_GET['id'];
+            $idColumn = 'codVenda';
+            $idColumnFinanceiro = 'nome';
+            $valueFin = 'venda id:' . $_GET['id'];
 
             if ($opcao == 0) {
-                foreach ($vendasItensAssociadas as $row) {
-                    $vendaItens_excluir->delete($row['id']); 
-                }
-
+                $vendaItens_excluir->delete($value, $idColumn);
                 $venda_excluir->delete($value);
-
+                $financeiro_excluir->delete($valueFin, $idColumnFinanceiro);
                 header("Location: " . ROOT . "/venda");
+                exit(); 
             } else {
                 header("Location: " . ROOT . "/venda");
+                exit();
             }
         }
 
