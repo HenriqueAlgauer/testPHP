@@ -32,6 +32,10 @@ class Venda_adicionar {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                die("Token CSRF inválido.");
+            }
+            
             if (!isset($_POST['vendaData'])) {
                 die("Dados da venda não enviados.");
             }

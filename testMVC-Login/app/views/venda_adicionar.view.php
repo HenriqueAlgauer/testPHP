@@ -1,3 +1,9 @@
+<?php 
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,6 +24,7 @@
             <h1>Adicionar Vendas</h1>
         </div>
         <form id="vendaForm" class="p-5 d-flex justify-content-around align-items-start" method="post">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
             <div class="w-25">
                 <div class="d-flex align-items-center gap-2 mb-5">
                     <label for="formaPagamento">Forma De Pagamento</label>
