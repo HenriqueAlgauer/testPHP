@@ -24,7 +24,7 @@
             <a href="<?=ROOT?>/venda">Clique aqui para acessar a tela de Vendas</a>
 
             <br><br>
-            <a href="<?=ROOT?>/financeiro">Clique aqui para acessar a tela de Financeiro</a>
+            <a href="<?=ROOT?>/financeiros">Clique aqui para acessar a tela de Financeiro</a>
         </div>
     </main>
 
