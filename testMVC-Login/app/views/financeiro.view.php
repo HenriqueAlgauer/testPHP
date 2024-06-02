@@ -19,10 +19,6 @@
             <h1>Financeiro</h1>
         </div>
 
-        <div class="text-center p-5">
-            <a href="<?=ROOT?>/dashboard">Voltar Pagina</a>
-        </div>
-
         <?php if (isset($_SESSION['error'])) { ?>
         <div class="alert alert-danger">
             <?= $_SESSION['error']; unset($_SESSION['error']); ?>
@@ -45,7 +41,7 @@
             </div>
         </div>
 
-        <table class="table table-hover">
+        <table id='tabela' class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -67,7 +63,7 @@
                     <td><?php echo $financeiros->data; ?></td>
                     <td colspan="2">
                         <div class="d-flex justify-content-around">
-                            <form method="post" action="<?= ROOT ?>/financeiros">
+                            <form method="post" action="<?= ROOT ?>/financeiros#tabela">
                                 <input type="hidden" name="id" value="<?= $financeiros->id ?>">
                                 <button type="submit" class="btn btn-danger">Excluir</button>
                             </form>
