@@ -14,18 +14,20 @@ class Venda_excluir
 
         $venda_excluir = new Vendas;
 
+        $vendaItens_excluir = new VendasItens;
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $opcao = $_POST['opcao'];
 
-            $value['id'] = $_GET['id'];
+            $value = ['id' => $_GET['id']];
 
-            $vendasItensAssociadas = $venda_excluir->where($value);
+            $vendasItensAssociadas['id'] = $vendaItens_excluir->where($value);
 
 
             if ($opcao == 0) {
                 foreach ($vendasItensAssociadas as $row) {
-                    $venda_excluir->delete($row['id']);
+                    $vendaItens_excluir->delete($row['id']); 
                 }
 
                 $venda_excluir->delete($value);
