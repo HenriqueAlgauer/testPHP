@@ -7,6 +7,10 @@ class Produto_editar
 
     public function index()
     {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+            header("Location: login");
+            exit();
+        }
 
         $produto_editar = new Produtos;
 

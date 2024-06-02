@@ -7,6 +7,10 @@ class Venda
 
     public function index()
     {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+            header("Location: login");
+            exit();
+        }
         $venda = new Vendas;
 
         if (isset($_POST['buscarVenda']) && !empty($_POST['buscarVenda'])) {

@@ -7,6 +7,11 @@ class Produto_excluir
 
     public function index()
     {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+            header("Location: login");
+            exit();
+        }
+        
         $produto_excluir = new Produtos;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){

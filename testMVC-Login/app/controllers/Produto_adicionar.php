@@ -5,6 +5,10 @@ class Produto_adicionar{
     use Controller;
     
     public function index(){
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+            header("Location: login");
+            exit();
+        }
         $produto_adicionar = new Produtos;
 
         $this->view('produto_adicionar');

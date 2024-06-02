@@ -1,4 +1,3 @@
-
 <?php
 
 class Produto
@@ -7,6 +6,10 @@ class Produto
 
     public function index()
     {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+            header("Location: login");
+            exit();
+        }
         $produtos = new Produtos;
 
         if (isset($_POST['buscarProduto'])) {
