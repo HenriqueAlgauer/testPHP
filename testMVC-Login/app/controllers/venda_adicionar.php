@@ -45,32 +45,25 @@ class Venda_adicionar {
             $formaPagamento = $vendaData['formaPagamento'];
             $valorTotal = floatval($vendaData['totalPrice']);
 
-            error_log('Dados da venda recebidos: ' . print_r($vendaData, true)); // Adicione esta linha para verificar os dados recebidos
-
             $vendaModel = new Vendas();
-            $vendasItensModel = new VendasItens();
 
             try {
                 $vendaModel->beginTransaction();
-
+                
                 $codVenda = $vendaModel->inserirVenda($formaPagamento, $valorTotal);
 
                 if (!$codVenda) {
-                    throw new Exception('Erro ao obter o ID da venda inserida.');
+                    throw new Exception('Erro ao inserir a venda.');
                 }
+
+                // $vendaItem = new VendasItens();
 
                 foreach ($vendaData['items'] as $item) {
                     $codProduto = $item['id'];
                     $quantidade = $item['quantidade'];
                     $valorItem = $item['valor'];
 
-                    error_log("Tentando inserir item da venda: Venda ID: $codVenda, Produto ID: $codProduto, Quantidade: $quantidade, Valor Item: $valorItem");
-
-                    $result = $vendasItensModel->inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem);
-
-                    if (!$result) {
-                        throw new Exception('Erro ao inserir item da venda: Venda ID: ' . $codVenda . ', Produto ID: ' . $codProduto . ', Quantidade: ' . $quantidade . ', Valor Item: ' . $valorItem);
-                    }
+                    $vendaModel->inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem);
                 }
 
                 $vendaModel->commit();
@@ -80,7 +73,6 @@ class Venda_adicionar {
                     $vendaModel->rollback();
                 }
                 echo "Erro ao finalizar a venda: " . $e->getMessage();
-                error_log("Erro ao finalizar a venda: " . $e->getMessage());
             }
         }
     }
