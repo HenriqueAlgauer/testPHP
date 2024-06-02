@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Login {
 
@@ -12,22 +12,37 @@ class Login {
             $user = new User;
             $arr['login'] = $_POST['login'];
             $login = $_POST['login'];
+            $senha = $_POST['senha'];
 
             $row = $user->first($arr);
             
             if($row){
-                if($row->senha === $_POST['senha']){
+                if($row->senha === $senha){
                     $_SESSION['LOGIN'] = $row;
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $login;
+                    
+                    if(isset($_POST['lembrar'])){
+                        setcookie('login', $login, time() + (86400 * 30), "/");
+                        setcookie('senha', $senha, time() + (86400 * 30), "/");
+                        setcookie('lembrar', '1', time() + (86400 * 30), "/");
+                    } else {
+                        if(isset($_COOKIE['login'])){
+                            setcookie('login', '', time() - 3600, "/"); 
+                        }
+                        if(isset($_COOKIE['senha'])){
+                            setcookie('senha', '', time() - 3600, "/");
+                        }
+                        if(isset($_COOKIE['lembrar'])){
+                            setcookie('lembrar', '', time() - 3600, "/");
+                        }
+                    }
+
                     redirect('dashboard');
                 }
             }
-
-            // print_r($_SESSION['LOGIN']);
                         
-            $user->errors['login'] = "Login ou senha inváilo";
-            // show($row);
+            $user->errors['login'] = "Login ou senha inválido";
             
             $data['errors'] = $user->errors;
         }
