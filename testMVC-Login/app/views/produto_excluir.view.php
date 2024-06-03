@@ -19,7 +19,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <form class="w-50 d-flex flex-column align-items-center" method="POST">
-                <span class="text-center" for="opcao">Deseja realmente <strong>EXCLUIR</strong> esse produto?</span>
+                <span class="text-center">Deseja realmente <strong>EXCLUIR</strong> esse produto?</span>
                 <div class="my-5 d-flex gap-5 flex-start">
                     <div class="form-check">
                         <label class="form-check-label" for="opcao0">Sim</label>
