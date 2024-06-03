@@ -30,8 +30,9 @@
             <div>
                 <form method="post" action="<?= ROOT ?>/financeiros">
                     <div class="input-group mb-3">
-                        <input type="search" placeholder="procure" id="buscarFin" name="buscaFin"
-                            aria-label="Recipient's username" aria-describedby="button-addon2" class='form-control'>
+                        <input style="width: 300px;" type="search" placeholder="id venda/ nome débito" id="buscarFin"
+                            name="buscaFin" aria-label="Recipient's username" aria-describedby="button-addon2"
+                            class='form-control'>
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                     </div>
                 </form>
