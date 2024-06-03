@@ -17,8 +17,9 @@
             class="bg-body-tertiary rounded shadow p-5 container d-flex flex-column justify-content-center align-items-center"
             method="post">
             <?php if(!empty($errors)):?>
-            <div>
-                <?php echo implode("<br>", $errors)?>
+            <div class="alert alert-danger">
+                <?php
+                 echo implode("<br>", $errors)?>
             </div>
             <?php endif;?>
             <div class="input-group mb-5">
