@@ -6,41 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?= ROOT ?>/assets/img/php3d.png" type="image/x-icon" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/reset.css" />
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 </head>
 
-<body>
-    <?=menu()?>
-    <main>
-
-        <div class="blur">
-            <h1>Produtos Excluir</h1>
+<body class="container">
+    <?= menu() ?>
+    <main class="mx-auto w-50 shadow rounded">
+        <div class="text-center p-5">
+            <h1>Excluir produto</h2>
         </div>
-        <br><br>
-        <div class="internalNav">
-            <form method="post" action="<?= ROOT ?>/produto">
-                <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto">
-                <button type="submit">Buscar</button>
+        <div class="d-flex justify-content-center">
+            <form class="w-50 d-flex flex-column align-items-center" method="POST">
+                <span class="text-center" for="opcao">Deseja realmente <strong>EXCLUIR</strong> esse produto?</span>
+                <div class="my-5 d-flex gap-5 flex-start">
+                    <div class="form-check">
+                        <label class="form-check-label" for="opcao0">Sim</label>
+                        <input class="form-check-input" type="radio" name="opcao" id="opcao" value="0">
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="opcao0">Não</label>
+                        <input class="form-check-input" type="radio" name="opcao" id="opcao" value="1">
+                    </div>
+                </div>
+                <button class="btn btn-primary " type="submit">Enviar</button>
             </form>
-            <br>
-            <a href="<?=ROOT?>/produto">Voltar pagina</a>
-
-            <br><br>
         </div>
-
-        <form method="POST">
-            <label for="opcao">Deseja Realmente Exluir esse Registro?</label><br><br>
-            <label for="opcao0">Sim</label>
-            <input type="radio" name="opcao" id="opcao" value="0"><br><br>
-            <label for="opcao0">Não</label>
-            <input type="radio" name="opcao" id="opcao" value="1">
-            <br><br>
-            <button type="submit">Confirmar Opcao</button>
-        </form>
-
 
     </main>
+    <a class="mx-auto my-5" href="<?=ROOT?>/produto">Voltar pagina</a>
 
     <?=footer()?>
 </body>
