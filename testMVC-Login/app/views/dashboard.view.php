@@ -18,7 +18,6 @@
             <h1>Dashboard</h1>
         </div>
         <div class="d-flex justify-content-center gap-5">
-
             <div class="shadow d-flex justify-content-around align-items-center rounded p-5 w-100">
                 <img style="width: 50px;" src="<?=ROOT?>/assets/img/prod.png" alt="" />
                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?=ROOT?>/produto">PRODUTOS

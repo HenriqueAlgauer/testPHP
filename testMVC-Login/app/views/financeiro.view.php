@@ -60,7 +60,7 @@
                     <th scope="row"><strong><?php echo $financeiros->id; ?></strong></th>
                     <td><?php echo $financeiros->tipo; ?></td>
                     <td><?php echo $financeiros->nome; ?></td>
-                    <td><?php echo $financeiros->valor; ?></td>
+                    <td>R$<?php echo $financeiros->valor; ?></td>
                     <td><?php echo $financeiros->data; ?></td>
                     <td colspan="2">
                         <div class="d-flex justify-content-around">
