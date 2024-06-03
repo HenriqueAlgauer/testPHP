@@ -17,16 +17,22 @@
         <div class="text-center p-5">
             <h1>Dashboard</h1>
         </div>
-        <div class="interacoes">
+        <div class="d-flex justify-content-center gap-5">
 
-            <br><br>
-            <a href="<?=ROOT?>/produto">Clique aqui para acessar a tela de produtos</a>
-
-            <br><br>
-            <a href="<?=ROOT?>/venda">Clique aqui para acessar a tela de Vendas</a>
-
-            <br><br>
-            <a href="<?=ROOT?>/financeiros">Clique aqui para acessar a tela de Financeiro</a>
+            <div class="shadow d-flex justify-content-around align-items-center rounded p-5 w-100">
+                <img style="width: 50px;" src="<?=ROOT?>/assets/img/prod.png" alt="" />
+                <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?=ROOT?>/produto">PRODUTOS
+                </a>
+            </div>
+            <div class="shadow d-flex justify-content-around align-items-center rounded p-5 w-100">
+                <img style="width: 50px;" src="<?=ROOT?>/assets/img/cart.png" alt="" />
+                <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?=ROOT?>/venda">VENDAS</a>
+            </div>
+            <div class="shadow d-flex justify-content-around align-items-center rounded p-5 w-100">
+                <img style="width: 50px;" src="<?=ROOT?>/assets/img/fin.png" alt="" />
+                <a class="link-offset-2 link-underline link-underline-opacity-0"
+                    href="<?=ROOT?>/financeiros">FINANCEIRO</a>
+            </div>
         </div>
     </main>
 
