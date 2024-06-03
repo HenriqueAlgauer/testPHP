@@ -25,67 +25,68 @@
                 unset($_SESSION['error']); ?>
         </div>
         <?php } ?>
-
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <form method="post" action="<?= ROOT ?>/financeiros">
-                    <div class="input-group mb-3">
-                        <input style="width: 300px;" type="search" placeholder="id venda/ nome débito" id="buscarFin"
-                            name="buscaFin" aria-label="Recipient's username" aria-describedby="button-addon2"
-                            class='form-control'>
-                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
-                    </div>
-                </form>
-            </div>
-            <div>
-                <a class="btn btn-success" href="<?= ROOT ?>/financeiro_adicionar
+        <div class="p-5 shadow rounded">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <form method="post" action="<?= ROOT ?>/financeiros">
+                        <div class="input-group mb-3">
+                            <input style="width: 300px;" type="search" placeholder="id venda/ nome débito"
+                                id="buscarFin" name="buscaFin" aria-label="Recipient's username"
+                                aria-describedby="button-addon2" class='form-control'>
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <a class="btn btn-success" href="<?= ROOT ?>/financeiro_adicionar
                 " id="botao" class="">Adicionar débito</a>
+                </div>
             </div>
-        </div>
 
-        <table id='tabela' class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Data</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+            <table id='tabela' class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                 if (isset($financeiro) && is_array($financeiro) && count($financeiro) > 0) {
                     foreach ($financeiro as $financeiros) { ?>
-                <tr>
-                    <th scope="row"><strong><?php echo $financeiros->id; ?></strong></th>
-                    <td><?php echo $financeiros->tipo; ?></td>
-                    <td><?php echo $financeiros->nome; ?></td>
-                    <td>R$<?php echo $financeiros->valor; ?></td>
-                    <td><?php echo $financeiros->data; ?></td>
-                    <td colspan="2">
-                        <div class="d-flex justify-content-around">
-                            <form method="post" action="<?= ROOT ?>/financeiros#tabela">
-                                <input type="hidden" name="id" value="<?= $financeiros->id ?>">
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
+                    <tr>
+                        <th scope="row"><strong><?php echo $financeiros->id; ?></strong></th>
+                        <td><?php echo $financeiros->tipo; ?></td>
+                        <td><?php echo $financeiros->nome; ?></td>
+                        <td>R$<?php echo $financeiros->valor; ?></td>
+                        <td><?php echo $financeiros->data; ?></td>
+                        <td colspan="2">
+                            <div class="d-flex justify-content-around">
+                                <form method="post" action="<?= ROOT ?>/financeiros#tabela">
+                                    <input type="hidden" name="id" value="<?= $financeiros->id ?>">
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
 
-                            <form method="post">
-                                <input type="hidden" name="id_edit" value="<?= $financeiros->id ?>">
-                                <button type="submit" class="btn btn-primary">Editar</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <?php }
+                                <form method="post">
+                                    <input type="hidden" name="id_edit" value="<?= $financeiros->id ?>">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php }
                 } else {
                     echo "Nenhum produto encontrado.";
                 }
                 ?>
-            </tbody>
-        </table>
-        <a href="<?= ROOT ?>/dashboard">Voltar para dashboard</a>
+                </tbody>
+            </table>
+        </div>
     </main>
+    <a class="ms-5" href="<?= ROOT ?>/dashboard">Voltar para dashboard</a>
 
     <?= footer() ?>
 </body>

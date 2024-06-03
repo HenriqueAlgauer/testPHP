@@ -18,59 +18,61 @@
         <div class="text-center p-5">
             <h1>Produtos</h1>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <form method="post" action="<?= ROOT ?>/produto">
-                    <div class="input-group mb-3">
-                        <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto"
-                            aria-label="Recipient's username" aria-describedby="button-addon2" class='form-control'>
-                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
-                    </div>
-                </form>
+        <div class="p-5 shadow rounded">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <form method="post" action="<?= ROOT ?>/produto">
+                        <div class="input-group mb-3">
+                            <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto"
+                                aria-label="Recipient's username" aria-describedby="button-addon2" class='form-control'>
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <a class="btn btn-success" href="<?= ROOT ?>/produto_adicionar" id="botao" class="">Adicionar
+                        Produto</a>
+                </div>
             </div>
-            <div>
-                <a class="btn btn-success" href="<?= ROOT ?>/produto_adicionar" id="botao" class="">Adicionar
-                    Produto</a>
-            </div>
-        </div>
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col">Estoque</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Estoque</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                 if (isset($produtos) && is_array($produtos) && count($produtos) > 0) {
                     foreach ($produtos as $produto) { ?>
-                <tr>
-                    <th scope="row"><strong><?php echo $produto->id; ?></strong></th>
-                    <td><?php echo $produto->nome; ?></td>
-                    <td><?php echo $produto->preco; ?></td>
-                    <td><?php echo $produto->estoque; ?></td>
-                    <td colspan="2">
-                        <div class="d-flex justify-content-around">
-                            <a href="<?= ROOT ?>/produto_editar?id=<?php echo $produto->id; ?>" id="botao"
-                                class="btn btn-primary">Editar</a>
-                            <a href="<?= ROOT ?>/produto_excluir?id=<?php echo $produto->id; ?>" id="botao"
-                                class="btn btn-danger">Excluir</a>
-                        </div>
-                    </td>
-                </tr>
-                <?php }
+                    <tr>
+                        <th scope="row"><strong><?php echo $produto->id; ?></strong></th>
+                        <td><?php echo $produto->nome; ?></td>
+                        <td><?php echo $produto->preco; ?></td>
+                        <td><?php echo $produto->estoque; ?></td>
+                        <td colspan="2">
+                            <div class="d-flex justify-content-around">
+                                <a href="<?= ROOT ?>/produto_editar?id=<?php echo $produto->id; ?>" id="botao"
+                                    class="btn btn-primary">Editar</a>
+                                <a href="<?= ROOT ?>/produto_excluir?id=<?php echo $produto->id; ?>" id="botao"
+                                    class="btn btn-danger">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php }
                 } else {
                     echo "Nenhum produto encontrado.";
                 }
                 ?>
-            </tbody>
-        </table>
-        <a href="<?= ROOT ?>/dashboard">Voltar para dashboard</a>
+                </tbody>
+            </table>
+        </div>
     </main>
+    <a class="ms-5" href="<?= ROOT ?>/dashboard">Voltar para dashboard</a>
 
     <?= footer() ?>
 </body>
