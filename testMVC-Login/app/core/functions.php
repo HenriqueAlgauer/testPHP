@@ -45,7 +45,7 @@ function menuExterno(){
         <ul>
         <li><img class='logo' src='http://localhost/testphp/testMVC-Login/public/assets/img/php3d.png' alt='' /></li>
             <li><a href='http://localhost/testphp/testMVC-Login/public/'>Home</a></li>
-            <li><a href='#'>naosei</a></li>
+            <li><a href='http://localhost/testphp/testMVC-Login/public/contato'>Contato</a></li>
             <li><a href='http://localhost/testphp/testMVC-Login/public/sobre'>Sobre</a></li>
         
         ";
