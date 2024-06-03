@@ -28,31 +28,26 @@
 
         <h2 class="h2-title">0800-666-1tapa na oreia</h2>
         <section>
-            <section>
-                <h2 class="h2-title">Desenvolvedores</h2>
-                <div class="dev-container">
-                    <div class="dev-box blur">
-                        <h3 class="dev-name">Henrique Machado Algauer</h3>
-                        <img class="dev-img" src="<?=ROOT?>/assets/img/dev2.jpg" alt="" />
-                        <div class="dev-git">
-                            <img src="<?=ROOT?>/assets/img/git.png" alt="" />
-                            <a href="https://github.com/henriquealgauer">GitHub</a>
-                        </div>
-                    </div>
-                    <div class="dev-box blur">
-                        <h3 class="dev-name">Gabriel Santos Camargo</h3>
-                        <img class="dev-img" src="<?=ROOT?>/assets/img/dev1.jpeg" alt="" />
-                        <div class="dev-git">
-                            <img src="<?=ROOT?>/assets/git.png" alt="" />
-                            <a href="https://github.com/Gabriel-S-camargo">GitHub</a>
-                        </div>
+            <h2 class="h2-title">Desenvolvedores</h2>
+            <div class="dev-container">
+                <div class="dev-box blur">
+                    <h3 class="dev-name">Henrique Machado Algauer</h3>
+                    <img class="dev-img" src="<?=ROOT?>/assets/img/dev2.jpg" alt="" />
+                    <div class="dev-git">
+                        <img src="<?=ROOT?>/assets/img/git.png" alt="" />
+                        <a href="https://github.com/henriquealgauer">GitHub</a>
                     </div>
                 </div>
-            </section>
-
+                <div class="dev-box blur">
+                    <h3 class="dev-name">Gabriel Santos Camargo</h3>
+                    <img class="dev-img" src="<?=ROOT?>/assets/img/dev1.jpeg" alt="" />
+                    <div class="dev-git">
+                        <img src="<?=ROOT?>/assets/git.png" alt="" />
+                        <a href="https://github.com/Gabriel-S-camargo">GitHub</a>
+                    </div>
+                </div>
+            </div>
         </section>
-
-
     </main>
     <?=footer()?>
 </body>
