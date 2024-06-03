@@ -4,10 +4,10 @@ class Login {
 
     use Controller;
 
-    public function index(){
+    public function index() {
         
         $data = [];
-        if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $user = new User;
             $arr['login'] = $_POST['login'];
@@ -16,24 +16,24 @@ class Login {
 
             $row = $user->first($arr);
             
-            if($row){
-                if($row->senha === $senha){
+            if ($row && isset($row->senha)) {
+                if (password_verify($senha, $row->senha)) {
                     $_SESSION['LOGIN'] = $row;
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $login;
                     
-                    if(isset($_POST['lembrar'])){
+                    if (isset($_POST['lembrar'])) {
                         setcookie('login', $login, time() + (86400 * 30), "/");
                         setcookie('senha', $senha, time() + (86400 * 30), "/");
                         setcookie('lembrar', '1', time() + (86400 * 30), "/");
                     } else {
-                        if(isset($_COOKIE['login'])){
+                        if (isset($_COOKIE['login'])) {
                             setcookie('login', '', time() - 3600, "/"); 
                         }
-                        if(isset($_COOKIE['senha'])){
+                        if (isset($_COOKIE['senha'])) {
                             setcookie('senha', '', time() - 3600, "/");
                         }
-                        if(isset($_COOKIE['lembrar'])){
+                        if (isset($_COOKIE['lembrar'])) {
                             setcookie('lembrar', '', time() - 3600, "/");
                         }
                     }
