@@ -13,12 +13,12 @@
 
 <body class="container">
     <?= menu() ?>
-    <main class="mx-auto">
-        <div class="text-center p-5">
-            <h1>Produtos Editar</h1>
+    <main class="mx-auto w-50 shadow rounded">
+        <div class="text-center pt-5">
+            <h1>Editar produto</h1>
         </div>
         <div class="p-5 d-flex justify-content-center">
-            <form class=" w-50 d-flex flex-column" method="post">
+            <form class="d-flex flex-column" method="post">
                 <div class="input-group mb-3">
                     <span class="input-group-text" for="nomeProduto" id="basic-addon1">Nome</span>
                     <input class="form-control" aria-describedby="basic-addon1" type="text" name="nome" id="nome"
@@ -35,11 +35,11 @@
                         id="estoque" value="<?= $produto->estoque ?>">
                 </div>
 
-                <button class="mx-auto btn btn-success" type="submit">Aplicar Alterações</button>
+                <button class="mx-auto btn btn-success mt-4" type="submit">Aplicar Alterações</button>
             </form>
         </div>
-        <a href="<?=ROOT?>/produto">Voltar pagina</a>
     </main>
+    <a class="mx-auto my-5" href="<?=ROOT?>/produto">Voltar pagina</a>
     <?=footer()?>
 
 </body>
