@@ -16,6 +16,11 @@ Trait Model{
 
         return $this->query($query);
     }
+    public function findAllVendaProds(){
+        $query = "SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type  ";
+
+        return $this->query($query);
+    }
 
     public function findAllProdutos(){
         $query = "SELECT * FROM $this->table WHERE estado = 'ativo' ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";

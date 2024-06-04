@@ -82,7 +82,7 @@ class Venda_adicionar {
             $pesquisa = $_POST['buscarProduto'];
             $result = $produtos->searchByDescriptionProduto($pesquisa);
         } else {
-            $result = $produtos->findAllProdutos();
+            $result = $produtos->findAllVendaProds();
         }
 
         if ($result === false || !is_array($result) || count($result) === 0) {

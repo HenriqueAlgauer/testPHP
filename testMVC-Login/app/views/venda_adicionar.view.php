@@ -70,15 +70,15 @@ if (empty($_SESSION['csrf_token'])) {
             </form>
 
             <div class="px-5 d-flex flex-column justify-content-center align-items-start">
-                <form class="mt-5" method="post">
+                <!-- <form class="mt-5" method="post">
                     <div class="input-group mb-3">
                         <input class="form-control" type="search" placeholder="nome do produto" id="buscarProduto"
                             name="buscarProduto">
                         <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                     </div>
-                </form>
+                </form> -->
 
-                <table class="border border-1 shadow-sm table table-hover mx-auto">
+                <table class="border border-1 shadow-sm table table-hover mt-5 mx-auto">
                     <thead>
                         <tr>
                             <th>ID</th>
