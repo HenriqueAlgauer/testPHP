@@ -14,7 +14,6 @@ class Venda_adicionar {
         $error = "";
         $success = "";
 
-        // Inicialize o modelo de venda fora do bloco try-catch para garantir que ele esteja disponível
         $vendaModel = new Vendas();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -81,9 +80,9 @@ class Venda_adicionar {
 
         if (isset($_POST['buscarProduto'])) {
             $pesquisa = $_POST['buscarProduto'];
-            $result = $produtos->searchByDescription($pesquisa);
+            $result = $produtos->searchByDescriptionProduto($pesquisa);
         } else {
-            $result = $produtos->findAll();
+            $result = $produtos->findAllProdutos();
         }
 
         if ($result === false || !is_array($result) || count($result) === 0) {
