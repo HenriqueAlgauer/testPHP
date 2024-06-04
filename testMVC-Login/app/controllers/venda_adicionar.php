@@ -32,7 +32,7 @@ class Venda_adicionar {
                 if (empty($vendaData['items'])) {
                     throw new Exception("A venda não pode estar vazia.");
                 }
-                
+
                 $formaPagamento = $vendaData['formaPagamento'];
                 $valorTotal = floatval($vendaData['totalPrice']);
 
@@ -93,4 +93,3 @@ class Venda_adicionar {
         $this->view('venda_adicionar', ['produtos' => $result, 'error' => $error]);
     }
 }
-?>

@@ -23,7 +23,7 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="text-center p-5">
             <h1>Adicionar Vendas</h1>
         </div>
-        <?php if (isset($error)): ?>
+        <?php if (isset($error)  && !empty($error)): ?>
         <div class="w-50 mb-4 mx-auto alert alert-danger">
             <?= $error ?>
         </div>
