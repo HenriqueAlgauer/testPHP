@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <table class="table table-hover">
+            <table class="border shadow-sm mt-3 table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

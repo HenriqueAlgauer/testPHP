@@ -27,6 +27,7 @@ $conn->select_db($dbname);
 $sql = "CREATE TABLE IF NOT EXISTS produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
+    estado VARCHAR(20) DEFAULT 'ativo',
     preco DECIMAL(10, 2) NOT NULL,
     estoque INT NOT NULL DEFAULT 0
 )";
@@ -104,7 +105,7 @@ BEGIN
 
     -- Inserir registro no financeiro
     INSERT INTO financeiro (tipo, nome, valor, data)
-    VALUES ('credito', NEW.codVenda, NEW.valorTotal, (SELECT dataVenda FROM vendas WHERE id = NEW.codVenda));
+    VALUES ('credito', CONCAT('venda id:', NEW.codVenda), NEW.valorTotal, (SELECT dataVenda FROM vendas WHERE id = NEW.codVenda));
 END;
 //
 DELIMITER ;";
