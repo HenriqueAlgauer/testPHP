@@ -5,6 +5,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 100px;
+  padding: 0px 10%;
 }
 
 .contato-div {
@@ -19,6 +20,10 @@ textarea {
   padding: 0px 0px 0px 100px;
 }
 
+.contato-div:nth-child(2) {
+  padding: 20px;
+}
+
 .contato-div h2,
 .contato-div h3 {
   color: #00689f;
@@ -29,7 +34,7 @@ textarea {
 }
 
 .input {
-  width: 70%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #00689f;
   border-radius: 4px;
@@ -38,7 +43,7 @@ textarea {
 }
 
 .area {
-  width: 70%;
+  width: 100%;
 }
 
 .contato-div .botao {

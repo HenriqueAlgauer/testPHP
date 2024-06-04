@@ -38,7 +38,7 @@
                     <h3>gabrielsantoscamargo8@gmail.com</h3>
                 </div>
             </div>
-            <div class="contato-div">
+            <div class="contato-div blur">
                 <label for="nome">Nome</label>
                 <input placeholder="nome" class="input" name="nome" type="text">
 
