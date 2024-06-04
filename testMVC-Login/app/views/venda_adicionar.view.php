@@ -11,7 +11,7 @@ if (empty($_SESSION['csrf_token'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?= ROOT ?>/assets/img/php3d.png" type="image/x-icon" />
-    <title>Dashboard</title>
+    <title>Adicionar Venda</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -23,10 +23,11 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="text-center p-5">
             <h1>Adicionar Vendas</h1>
         </div>
-
-        <div class="text-center p-5">
-            <a href="<?=ROOT?>/venda">Voltar Pagina</a>
+        <?php if (isset($error)): ?>
+        <div class="w-50 mb-4 mx-auto alert alert-danger">
+            <?= $error ?>
         </div>
+        <?php endif; ?>
         <form id="vendaForm" class="p-5 d-flex justify-content-around align-items-start" method="post">
             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
             <div class="w-25">
@@ -43,7 +44,8 @@ if (empty($_SESSION['csrf_token'])) {
                     <div>
                         <strong>Total: R$ <span id="totalPrice">0.00</span></strong>
                     </div>
-                    <button class="btn btn-success" onclick="submitVendaForm()" type="submit">Finalizar Venda</button>
+                    <button class="btn btn-success shadow" onclick="submitVendaForm()" type="submit">Finalizar
+                        Venda</button>
                 </div>
             </div>
 
