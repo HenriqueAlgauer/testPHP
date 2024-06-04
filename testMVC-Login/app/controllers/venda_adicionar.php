@@ -29,6 +29,10 @@ class Venda_adicionar {
                     throw new Exception("Erro ao decodificar os dados da venda.");
                 }
 
+                if (empty($vendaData['items'])) {
+                    throw new Exception("A venda não pode estar vazia.");
+                }
+                
                 $formaPagamento = $vendaData['formaPagamento'];
                 $valorTotal = floatval($vendaData['totalPrice']);
 
