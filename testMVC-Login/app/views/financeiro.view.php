@@ -43,7 +43,8 @@
                 </div>
             </div>
 
-            <table id='tabela' class="table table-hover">
+
+            <table id='tabela' class="border shadow-sm mt-3 table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -64,15 +65,15 @@
                         <td>R$<?php echo $financeiros->valor; ?></td>
                         <td><?php echo $financeiros->data; ?></td>
                         <td colspan="2">
-                            <div class="d-flex justify-content-around">
-                                <form method="post" action="<?= ROOT ?>/financeiros#tabela">
-                                    <input type="hidden" name="id" value="<?= $financeiros->id ?>">
-                                    <button type="submit" class="btn btn-danger">Excluir</button>
-                                </form>
-
+                            <div class="d-flex justify-content-between">
                                 <form method="post">
                                     <input type="hidden" name="id_edit" value="<?= $financeiros->id ?>">
                                     <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
+
+                                <form method="post" action="<?= ROOT ?>/financeiros#tabela">
+                                    <input type="hidden" name="id" value="<?= $financeiros->id ?>">
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
                                 </form>
                             </div>
                         </td>

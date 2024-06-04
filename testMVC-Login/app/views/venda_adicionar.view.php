@@ -21,9 +21,15 @@ if (empty($_SESSION['csrf_token'])) {
 <body class="container">
     <?= menu() ?>
     <main class="mx-auto ">
-        <?php if (isset($error)  && !empty($error)): ?>
+        <?php if (isset($error) && !empty($error)): ?>
         <div class="w-50 mb-4 mx-auto alert alert-danger">
             <?= $error ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if (isset($success) && !empty($success)): ?>
+        <div class="w-50 mb-4 mx-auto alert alert-success">
+            <?= $success ?>
         </div>
         <?php endif; ?>
         <div class="shadow rounded py-5">

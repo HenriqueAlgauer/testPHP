@@ -12,6 +12,10 @@ class Venda_adicionar {
 
         $produtos = new Produtos;
         $error = "";
+        $success = "";
+
+        // Inicialize o modelo de venda fora do bloco try-catch para garantir que ele esteja disponível
+        $vendaModel = new Vendas();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             try {
@@ -36,7 +40,6 @@ class Venda_adicionar {
                 $formaPagamento = $vendaData['formaPagamento'];
                 $valorTotal = floatval($vendaData['totalPrice']);
 
-                $vendaModel = new Vendas();
                 $produtoModel = new Produtos();
 
                 $vendaModel->beginTransaction();
@@ -67,7 +70,7 @@ class Venda_adicionar {
                 }
 
                 $vendaModel->commit();
-                return;
+                $success = "Venda finalizada com sucesso!";
             } catch (Exception $e) {
                 if ($vendaModel->inTransaction()) {
                     $vendaModel->rollback();
@@ -90,6 +93,7 @@ class Venda_adicionar {
             }
         }
 
-        $this->view('venda_adicionar', ['produtos' => $result, 'error' => $error]);
+        $this->view('venda_adicionar', ['produtos' => $result, 'error' => $error, 'success' => $success]);
     }
 }
+?>
