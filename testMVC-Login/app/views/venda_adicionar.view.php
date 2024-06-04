@@ -13,6 +13,7 @@ if (empty($_SESSION['csrf_token'])) {
     <link rel="shortcut icon" href="<?= ROOT ?>/assets/img/php3d.png" type="image/x-icon" />
     <title>Adicionar Venda</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/style.css" />
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/financeiro.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 </head>
@@ -20,88 +21,98 @@ if (empty($_SESSION['csrf_token'])) {
 <body class="container">
     <?= menu() ?>
     <main class="mx-auto ">
-        <div class="text-center p-5">
-            <h1>Adicionar Vendas</h1>
-        </div>
         <?php if (isset($error)  && !empty($error)): ?>
         <div class="w-50 mb-4 mx-auto alert alert-danger">
             <?= $error ?>
         </div>
         <?php endif; ?>
-        <form id="vendaForm" class="p-5 d-flex justify-content-around align-items-start" method="post">
-            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-            <div class="w-25">
-                <div class="d-flex align-items-center gap-2 mb-5">
-                    <label for="formaPagamento">Forma De Pagamento</label>
-                    <select style='max-width:120px' class="form-select" name="formaPagamento" id="formaPagamento"
-                        aria-label="Default select example">
-                        <option value="credito">Credito</option>
-                        <option value="debito">Debito</option>
-                        <option value="dinheiro">Dinheiro</option>
-                    </select>
+        <div class="shadow rounded py-5">
+            <form id="vendaForm" class="px-5 d-flex justify-content-between" method="post">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                <div class="d-flex flex-column justify-content-end align-items-center gap-5 ">
+                    <button class="btn btn-danger shadow" type="button" onclick="removeLastItem()">Remover
+                        Item</button>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
+
+                <div class="d-flex flex-column justify-content-between align-items-center">
                     <div>
-                        <strong>Total: R$ <span id="totalPrice">0.00</span></strong>
+                        <h2>Produtos Selecionados</h2>
                     </div>
-                    <button class="btn btn-success shadow" onclick="submitVendaForm()" type="submit">Finalizar
-                        Venda</button>
+                    <div class="d-flex flex-column justify-content-between align-items-center"
+                        id="produtos-selecionados">
+                        <ul id="selectedProductsList" class="list-group w-100"></ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="d-flex flex-column justify-content-center align-items-center">
-                <h2>Produtos Selecionados</h2>
-                <ul id="selectedProductsList" class="list-group w-50"></ul>
-            </div>
-
-            <div class="d-flex flex-column justify-content-start gap-5 mb-2">
-                <button class="btn btn-danger" type="button" onclick="removeLastItem()">Remover Item</button>
-            </div>
-        </form>
-
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <form class="my-5" method="post">
-                <label for="vendaItens">procure por produtos</label>
-                <input type="search" placeholder="digite produto" id="buscarProduto" name="buscarProduto">
-                <button type="submit">Buscar</button>
+                <div class="w-25 d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center gap-2 mb-5">
+                        <label for="formaPagamento">Forma De Pagamento</label>
+                        <select style='max-width:120px' class="form-select" name="formaPagamento" id="formaPagamento"
+                            aria-label="Default select example">
+                            <option value="credito">Credito</option>
+                            <option value="debito">Debito</option>
+                            <option value="dinheiro">Dinheiro</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Total: R$ <span id="totalPrice">0.00</span></strong>
+                        </div>
+                        <button class="btn btn-success shadow" onclick="submitVendaForm()" type="submit">Finalizar
+                            Venda</button>
+                    </div>
+                </div>
             </form>
 
-            <table class="mx-auto">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Estoque</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="productTableBody">
-                    <?php if (isset($produtos) && is_array($produtos) && count($produtos) > 0): ?>
-                    <?php foreach ($produtos as $produto): ?>
-                    <tr>
-                        <td><strong><?php echo $produto->id; ?></strong></td>
-                        <td><?php echo $produto->nome; ?></td>
-                        <td><?php echo $produto->preco; ?></td>
-                        <td><?php echo $produto->estoque; ?></td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <input type="number" name="quantidade" placeholder="Qnt." min="1">
-                                <button type="button" class="btn btn-primary"
-                                    onclick="addProduct(<?php echo $produto->id; ?>, '<?php echo $produto->nome; ?>', <?php echo $produto->preco; ?>, this.previousElementSibling.value)">Adicionar</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <?php else: ?>
-                    <tr>
-                        <td colspan="5">Nenhum produto encontrado.</td>
-                    </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+            <div class="px-5 d-flex flex-column justify-content-center align-items-start">
+                <form class="mt-5" method="post">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="search" placeholder="nome do produto" id="buscarProduto"
+                            name="buscarProduto">
+                        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                    </div>
+                </form>
+
+                <table class="border border-1 shadow-sm table table-hover mx-auto">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Informe a quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <?php if (isset($produtos) && is_array($produtos) && count($produtos) > 0): ?>
+                        <?php foreach ($produtos as $produto): ?>
+                        <tr>
+                            <td><strong><?php echo $produto->id; ?></strong></td>
+                            <td><?php echo $produto->nome; ?></td>
+                            <td>R$ <?php echo $produto->preco; ?></td>
+                            <td><?php echo $produto->estoque; ?></td>
+                            <td>
+                                <div class="d-flex pe-5 justify-content-between">
+                                    <input style="max-width: 120px;" class="form-control" type="number"
+                                        name="quantidade" placeholder="Qnt." min="1">
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="addProduct(<?php echo $produto->id; ?>, '<?php echo $produto->nome; ?>', <?php echo $produto->preco; ?>, this.previousElementSibling.value)">Adicionar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                        <tr>
+                            <td colspan="5">Nenhum produto encontrado.</td>
+                        </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     </main>
+    <a class="ms-5" href="<?= ROOT ?>/venda">Voltar para dashboard</a>
+
     <?= footer() ?>
 
     <script>
@@ -118,7 +129,8 @@ if (empty($_SESSION['csrf_token'])) {
             quantidade
         };
         const productItem = document.createElement('li');
-        productItem.className = 'list-group-item d-flex justify-content-between align-items-center item';
+        productItem.className =
+            'list-group-item w-100 my-1 d-flex justify-content-between align-items-center item';
         productItem.innerHTML = `
             <div>
                 <strong>ID:</strong> ${product.id} |
