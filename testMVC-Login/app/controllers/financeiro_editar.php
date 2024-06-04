@@ -33,10 +33,10 @@ class Financeiro_editar
 
             if ($result !== false && is_array($result) && count($result) > 0) {
 
-                header("Location: " . ROOT . "/financeiros");
+                header("Location: " . ROOT . "/financeiro_debito");
                 exit;
             } else {
-                header("Location: " . ROOT . "/financeiros");
+                header("Location: " . ROOT . "/financeiro_debito");
             }
         }
     }

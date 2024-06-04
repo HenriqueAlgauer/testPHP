@@ -130,15 +130,6 @@ Trait Model{
     }
     
 
-    function test(){
-        $query = "select * from users";
-        $result = $this->query($query);
-        
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
-    }
-
     public function searchByDescription($description)
     {
         $query = "SELECT * FROM $this->table WHERE nome LIKE :description";
@@ -151,5 +142,23 @@ Trait Model{
         $query = "SELECT * FROM $this->table WHERE nome LIKE :description AND estado = 'ativo'";
         $data = [':description' => "%$description%"];
         return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionFinDeb($description) {
+        $query = "SELECT * FROM $this->table WHERE descricao LIKE :description AND tipo = 'debito'";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionFinCred($description) {
+        $query = "SELECT * FROM $this->table WHERE descricao LIKE :description AND tipo = 'credito'";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function findByType($type) {
+        $query = "SELECT * FROM $this->table WHERE tipo = :type";
+        $params = ['type' => $type];
+        return $this->query($query, $params);
     }
 }

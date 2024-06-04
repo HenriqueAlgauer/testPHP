@@ -33,7 +33,7 @@ class Financeiro_adicionar
 
                 $financeiro_adicionar->insert($values);
 
-                header("Location: " . ROOT . "/financeiros");
+                header("Location: " . ROOT . "/financeiro_debito");
             }
         }
     }
