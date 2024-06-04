@@ -1,12 +1,10 @@
 <?php
 
-class Produto_editar
-{
+class Produto_editar {
 
     use Controller;
 
-    public function index()
-    {
+    public function index() {
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             header("Location: login");
             exit();
@@ -18,31 +16,31 @@ class Produto_editar
 
         $produtoEncontrado = $produto_editar->first($data);
 
-
-        $this->view('produto_editar', ['produto' => $produtoEncontrado]);
-
-        if($_SERVER['REQUEST_METHOD'] == "POST"){
-
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data['id'] = $_GET['id'];
 
-            $values = array(
-                'nome' => $_POST['nome'],
-                'preco' => floatval($_POST['preco']),
-                'estoque' => intval($_POST['estoque'])
-            );
-            
-            $result = $produto_editar->update($data['id'], $values);
+            $nome = $_POST['nome'];
+            $preco = floatval($_POST['preco']);
+            $estoque = intval($_POST['estoque']);
 
-            if ($result !== false && is_array($result) && count($result) > 0) {
-                
+            if ($estoque > 1) {
+                $values = array(
+                    'nome' => $nome,
+                    'preco' => $preco,
+                    'estoque' => $estoque
+                );
+
+                $produto_editar->update($data['id'], $values);
                 header("Location: " . ROOT . "/produto");
-                exit; 
+                exit();
             } else {
-                header("Location: " . ROOT . "/produto");
+                $error = "O estoque precisa ser maior que 1.";
+                $this->view('produto_editar', ['produto' => $produtoEncontrado, 'error' => $error]);
+                return;
             }
-
-
-            
+        } else {
+            $this->view('produto_editar', ['produto' => $produtoEncontrado]);
         }
     }
 }
+?>

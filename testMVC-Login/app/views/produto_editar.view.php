@@ -14,10 +14,15 @@
 <body class="container">
     <?= menu() ?>
     <main class="mx-auto w-50 shadow rounded">
-        <div class="text-center pt-5">
+        <div class="text-center pt-5 pb-3">
             <h1>Editar produto</h1>
         </div>
-        <div class="p-5 d-flex justify-content-center">
+        <?php if (isset($error)): ?>
+        <div class="w-50 mb-4 mx-auto alert alert-danger">
+            <?= $error ?>
+        </div>
+        <?php endif; ?>
+        <div class="ps-5 pe-5 pb-5 d-flex justify-content-center">
             <form class="d-flex flex-column" method="post">
                 <div class="input-group mb-3">
                     <span class="input-group-text" for="nomeProduto" id="basic-addon1">Nome</span>
