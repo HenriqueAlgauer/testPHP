@@ -23,4 +23,4 @@ define('APP_NAME', 'Projeto faculdade de PHP');
 define('APP_DESC', 'Esse projeto ');
 
 /* true means show errors */    
-define('DEBUG', true);
+// define('DEBUG', true);
