@@ -14,7 +14,7 @@ class Produto
 
         if (isset($_POST['buscarProduto'])) {
             $pesquisa = $_POST['buscarProduto'];
-            $result = $produtos->searchByDescription($pesquisa);
+            $result = $produtos->searchByDescriptionProduto($pesquisa);
 
             if ($result !== false && is_array($result) && count($result) > 0) {
                 $this->view('produtos', ['produtos' => $result]);
@@ -23,7 +23,7 @@ class Produto
                 $this->view('produtos', ['produtos' => []]);
             }
         } else {
-            $result = $produtos->findAll();
+            $result = $produtos->findAllProdutos();
 
             if ($result !== false && is_array($result) && count($result) > 0) {
                 $this->view('produtos', ['produtos' => $result]);

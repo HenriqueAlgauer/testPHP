@@ -17,6 +17,12 @@ Trait Model{
         return $this->query($query);
     }
 
+    public function findAllProdutos(){
+        $query = "SELECT * FROM $this->table WHERE estado = 'ativo' ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+        return $this->query($query);
+    }
+
     public function where($data, $data_not = []){
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
@@ -116,6 +122,12 @@ Trait Model{
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column"; // Certifique-se de que o placeholder corresponda ao nome da coluna
         return $this->query($query, $data);
     }
+
+    public function deleteProduto($id, $id_column = 'id'){
+        $data[$id_column] = $id;
+        $query = "UPDATE $this->table SET estado = 'inativo' WHERE $id_column = :id"; // Certifique-se de que o placeholder corresponda ao nome da coluna
+        return $this->query($query, $data);
+    }
     
 
     function test(){
@@ -130,6 +142,13 @@ Trait Model{
     public function searchByDescription($description)
     {
         $query = "SELECT * FROM $this->table WHERE nome LIKE :description";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionProduto($description)
+    {
+        $query = "SELECT * FROM $this->table WHERE nome LIKE :description AND estado = 'ativo'";
         $data = [':description' => "%$description%"];
         return $this->query($query, $data);
     }
