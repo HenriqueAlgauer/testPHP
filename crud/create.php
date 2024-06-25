@@ -7,15 +7,21 @@ if (!isset($_SESSION['user_id'])) {
 }
 require 'db.php';
 
+$message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
 
-    $sql = 'INSERT INTO products (name, description, price) VALUES (:name, :description, :price)';
-    $statement = $pdo->prepare($sql);
-    if ($statement->execute([':name' => $name, ':description' => $description, ':price' => $price])) {
-        $message = 'Produto criado com sucesso';
+    if (empty($name) || empty($description) || empty($price)) {
+        $message = 'Por favor, preencha todos os campos.';
+    } else {
+        $sql = 'INSERT INTO products (name, description, price) VALUES (:name, :description, :price)';
+        $statement = $pdo->prepare($sql);
+        if ($statement->execute([':name' => $name, ':description' => $description, ':price' => $price])) {
+            $message = 'Produto criado com sucesso';
+        }
     }
 }
 ?>
