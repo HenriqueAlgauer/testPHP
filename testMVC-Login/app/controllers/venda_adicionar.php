@@ -11,52 +11,53 @@ class Venda_adicionar {
         }
 
         $produtos = new Produtos;
+        $error = "";
+        $success = "";
 
-        if (isset($_POST['buscarProduto'])) {
-            $pesquisa = $_POST['buscarProduto'];
-            $result = $produtos->searchByDescription($pesquisa);
-
-            if ($result !== false && is_array($result) && count($result) > 0) {
-                $this->view('venda_adicionar', ['produtos' => $result]);
-            } else {
-                $this->view('venda_adicionar', ['produtos' => []]);
-            }
-        } else {
-            $result = $produtos->findAll();
-
-            if ($result !== false && is_array($result) && count($result) > 0) {
-                $this->view('venda_adicionar', ['produtos' => $result]);
-            } else {
-                $this->view('venda_adicionar', ['produtos' => []]);
-            }
-        }
+        $vendaModel = new Vendas();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (!isset($_POST['vendaData'])) {
-                die("Dados da venda não enviados.");
-            }
-
-            $vendaData = json_decode($_POST['vendaData'], true);
-
-            if ($vendaData === null) {
-                die("Erro ao decodificar os dados da venda.");
-            }
-
-            $formaPagamento = $vendaData['formaPagamento'];
-            $valorTotal = floatval($vendaData['totalPrice']);
-
-            error_log('Dados da venda recebidos: ' . print_r($vendaData, true)); // Adicione esta linha para verificar os dados recebidos
-
-            $vendaModel = new Vendas();
-            $vendasItensModel = new VendasItens();
-
             try {
+                if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                    throw new Exception("Token CSRF inválido.");
+                }
+
+                if (!isset($_POST['vendaData'])) {
+                    throw new Exception("Dados da venda não enviados.");
+                }
+
+                $vendaData = json_decode($_POST['vendaData'], true);
+
+                if ($vendaData === null) {
+                    throw new Exception("Erro ao decodificar os dados da venda.");
+                }
+
+                if (empty($vendaData['items'])) {
+                    throw new Exception("A venda não pode estar vazia.");
+                }
+
+                $formaPagamento = $vendaData['formaPagamento'];
+                $valorTotal = floatval($vendaData['totalPrice']);
+
+                $produtoModel = new Produtos();
+
                 $vendaModel->beginTransaction();
+
+                foreach ($vendaData['items'] as $item) {
+                    $codProduto = $item['id'];
+                    $quantidade = $item['quantidade'];
+
+                    $produto = $produtoModel->first(['id' => $codProduto]);
+
+                    if ($produto === false || $produto->estoque < $quantidade) {
+                        throw new Exception('Estoque insuficiente para o produto ID: ' . $codProduto);
+                    }
+                }
 
                 $codVenda = $vendaModel->inserirVenda($formaPagamento, $valorTotal);
 
                 if (!$codVenda) {
-                    throw new Exception('Erro ao obter o ID da venda inserida.');
+                    throw new Exception('Erro ao inserir a venda.');
                 }
 
                 foreach ($vendaData['items'] as $item) {
@@ -64,25 +65,34 @@ class Venda_adicionar {
                     $quantidade = $item['quantidade'];
                     $valorItem = $item['valor'];
 
-                    error_log("Tentando inserir item da venda: Venda ID: $codVenda, Produto ID: $codProduto, Quantidade: $quantidade, Valor Item: $valorItem");
-
-                    $result = $vendasItensModel->inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem);
-
-                    if (!$result) {
-                        throw new Exception('Erro ao inserir item da venda: Venda ID: ' . $codVenda . ', Produto ID: ' . $codProduto . ', Quantidade: ' . $quantidade . ', Valor Item: ' . $valorItem);
-                    }
+                    $vendaModel->inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem);
                 }
 
                 $vendaModel->commit();
-                echo "Venda finalizada com sucesso!";
+                $success = "Venda finalizada com sucesso!";
             } catch (Exception $e) {
                 if ($vendaModel->inTransaction()) {
                     $vendaModel->rollback();
                 }
-                echo "Erro ao finalizar a venda: " . $e->getMessage();
-                error_log("Erro ao finalizar a venda: " . $e->getMessage());
+                $error = $e->getMessage();
             }
         }
+
+        if (isset($_POST['buscarProduto'])) {
+            $pesquisa = $_POST['buscarProduto'];
+            $result = $produtos->searchByDescriptionProduto($pesquisa);
+        } else {
+            $result = $produtos->findAllVendaProds();
+        }
+
+        if ($result === false || !is_array($result) || count($result) === 0) {
+            $result = [];
+            if (empty($error)) {
+                $error = "Nenhum produto encontrado.";
+            }
+        }
+
+        $this->view('venda_adicionar', ['produtos' => $result, 'error' => $error, 'success' => $success]);
     }
 }
 ?>

@@ -5,7 +5,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBNAME', 'loja');
     define('DBHOST', 'localhost');
     define('DBUSER', 'root');
-    define('DBPASS', 'hhma2005');
+    define('DBPASS', '1234');
     define('DBDRIVER', '');
     define('DBPORT', '3306');
 
@@ -22,5 +22,5 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
 define('APP_NAME', 'Projeto faculdade de PHP');
 define('APP_DESC', 'Esse projeto ');
 
-/* true means show errors */
+/* true means show errors */    
 define('DEBUG', true);

@@ -17,14 +17,16 @@
             class="bg-body-tertiary rounded shadow p-5 container d-flex flex-column justify-content-center align-items-center"
             method="post">
             <?php if(!empty($errors)):?>
-            <div>
-                <?php echo implode("<br>", $errors)?>
+            <div class="alert alert-danger">
+                <?php
+                 echo implode("<br>", $errors)?>
             </div>
             <?php endif;?>
             <div class="input-group mb-5">
                 <span class="input-group-text">@</span>
                 <div class="form-floating mx-auto">
-                    <input type="text" id="user" class="form-control" name="login" maxlength="20" />
+                    <input type="text" id="user" class="form-control" name="login" maxlength="20"
+                        value="<?php if(isset($_COOKIE['login'])) { echo $_COOKIE['login']; } ?>" />
                     <label for="user">usuário</label>
                 </div>
             </div>
@@ -32,13 +34,16 @@
             <div class="input-group mb-3">
                 <span class="input-group-text">#</span>
                 <div class="form-floating">
-                    <input type="password" id="pwd" class="form-control" name="senha" maxlength="20" />
+                    <input type="password" id="pwd" class="form-control" name="senha" maxlength="20"
+                        value="<?php if(isset($_COOKIE['senha'])) { echo $_COOKIE['senha']; } ?>" />
                     <label for="pwd">senha</label>
                 </div>
             </div>
 
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="1" name="lembrar" id="lembrar" />Lembrar senha
+                <input class="form-check-input" type="checkbox" value="1" name="lembrar" id="lembrar"
+                    <?php if(isset($_COOKIE['lembrar'])) { echo 'checked'; } ?> />
+                Lembrar senha
             </div>
             <button class="btn btn-primary" type="submit">Entrar</button>
             <?php if (isset($error)) { echo "

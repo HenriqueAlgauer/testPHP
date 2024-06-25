@@ -36,25 +36,26 @@ class Vendas {
     }
 
     public function inserirVenda($formaPagamento, $valorTotal) {
-        try {
-            $query = "INSERT INTO vendas (formaPagamento, valorTotal) VALUES (:formaPagamento, :valorTotal)";
-            $stmt = $this->conn->prepare($query);
-            $params = [
-                ':formaPagamento' => $formaPagamento,
-                ':valorTotal' => $valorTotal
-            ];
-            $stmt->execute($params);
-            $codVenda = $this->conn->lastInsertId();
-            if ($codVenda) {
-                return $codVenda;
-            } else {
-                error_log("Erro ao obter o ID da venda inserida.");
-                return false;
-            }
-        } catch (PDOException $e) {
-            error_log("Erro ao inserir a venda: " . $e->getMessage());
-            return false;
-        }
+        $query = "INSERT INTO vendas (formaPagamento, valorTotal) VALUES (:formaPagamento, :valorTotal)";
+        $stmt = $this->conn->prepare($query);
+        $params = [
+            ':formaPagamento' => $formaPagamento,
+            ':valorTotal' => $valorTotal
+        ];
+        $stmt->execute($params);
+        return $this->conn->lastInsertId();
+    }
+
+    public function inserirVendaItem($codVenda, $codProduto, $quantidade, $valorItem) {
+        $query = "INSERT INTO vendasItens (codVenda, codProduto, quantidade, valorItem) VALUES (:codVenda, :codProduto, :quantidade, :valorItem)";
+        $stmt = $this->conn->prepare($query);
+        $params = [
+            ':codVenda' => $codVenda,
+            ':codProduto' => $codProduto,
+            ':quantidade' => $quantidade,
+            ':valorItem' => $valorItem
+        ];
+        $stmt->execute($params);
     }
 }
 ?>

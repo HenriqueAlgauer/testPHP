@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS produtos (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(100) NOT NULL,
 preco DECIMAL(10, 2) NOT NULL,
+estado VARCHAR(20) DEFAULT 'ativo',
 estoque INT NOT NULL DEFAULT 0
 );
 
@@ -40,10 +41,10 @@ valor DECIMAL(10, 2) NOT NULL,
 data DATE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS usuario (
+create table usuario (
 login VARCHAR(20) PRIMARY KEY,
-senha VARCHAR(255) NOT NULL
-)
+senha VARCHAR(255) NOT NULL
+);
 
 -- Trigger para atualizar o estoque e registrar a venda no financeiro após uma venda
 DELIMITER //
@@ -51,14 +52,15 @@ CREATE TRIGGER atualizar_estoque_venda
 AFTER INSERT ON vendasItens
 FOR EACH ROW
 BEGIN
--- Atualizar estoque
-UPDATE produtos
-SET estoque = estoque - NEW.quantidade
-WHERE id = NEW.codProduto;
+    -- Atualizar estoque
+    UPDATE produtos
+    SET estoque = estoque - NEW.quantidade
+    WHERE id = NEW.codProduto;
 
--- Inserir registro no financeiro
-INSERT INTO financeiro (tipo, nome, valor, data)
-VALUES ('credito', NEW.codVenda, NEW.valorTotal, (SELECT dataVenda FROM vendas WHERE id = NEW.codVenda));
+    -- Inserir registro no financeiro
+    INSERT INTO financeiro (tipo, nome, valor, data)
+    VALUES ('credito', CONCAT('venda id:', NEW.codVenda), NEW.valorTotal, (SELECT dataVenda FROM vendas WHERE id = NEW.codVenda));
 END;
+
 //
 DELIMITER ;

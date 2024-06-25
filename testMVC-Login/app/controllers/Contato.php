@@ -1,9 +1,10 @@
 <?php 
 
-class _404{
+class Contato{
 
     use Controller;
+
     public function index(){
-        $this->view('404');
+        $this->view('contato');
     }
 }

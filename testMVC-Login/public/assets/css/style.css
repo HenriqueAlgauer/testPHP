@@ -155,55 +155,48 @@ footer {
   padding: 1rem;
 }
 
-/*Produtos - Style Abaixo*/
-
-/* table,
-td table {
-  width: 46.875rem;
-  border: 1px solid black;
-  text-align: center;
-}
-
-.internalNav {
-  td {
-    border: 1px solid black;
-    border-collapse: separate;
-  }
-
-  tr {
-    height: 2rem;
-    text-align: center;
-  }
-
-  .internalNav {
-    max-width: 46.875rem;
-    max-height: 2.5rem;
-    
-  }
-}
-
-td:last-child {
-  max-width: 2rem;
-}
-
-.funcoes {
+.dev-container {
   display: flex;
-  gap: 10px;
+  justify-content: space-evenly;
+}
+
+.dev-box {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 30px;
+  margin: 70px 0px;
+  padding: 30px;
+  background-image: url("../img/kk.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dev-git {
+  display: flex;
   justify-content: center;
-  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 2px solid #00689f;
+  border-radius: 4px;
 }
 
-.botao {
-  border: 1px solid black;
-  padding: 2px;
-  border-radius: 5px;
+.dev-git a {
+  line-height: 30px;
 }
 
-.botaoEditar {
-  background-color: green;
+.dev-git img {
+  width: 30px;
 }
 
-.botaoExcluir {
-  background-color: red;
-} */
+.dev-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  border: 3px solid #00689f;
+  animation: changeBorderColor 10s infinite;
+  opacity: 1;
+}

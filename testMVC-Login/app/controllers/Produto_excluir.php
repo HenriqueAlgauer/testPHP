@@ -21,7 +21,7 @@ class Produto_excluir
             $value = $_GET['id'];
 
             if($opcao == 0){
-                $produto_excluir->delete($value);
+                $produto_excluir->deleteProduto($value);
                 
                 header("Location: " . ROOT . "/produto");
             }else{

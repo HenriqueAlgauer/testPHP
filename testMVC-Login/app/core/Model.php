@@ -16,6 +16,17 @@ Trait Model{
 
         return $this->query($query);
     }
+    public function findAllVendaProds(){
+        $query = "SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type  ";
+
+        return $this->query($query);
+    }
+
+    public function findAllProdutos(){
+        $query = "SELECT * FROM $this->table WHERE estado = 'ativo' ORDER BY $this->order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+        return $this->query($query);
+    }
 
     public function where($data, $data_not = []){
         $keys = array_keys($data);
@@ -113,25 +124,46 @@ Trait Model{
 
     public function delete($id, $id_column = 'id'){
         $data[$id_column] = $id;
-        $query = "DELETE FROM $this->table WHERE $id_column = :id";
-        
-        $this->query($query, $data);
-        return false;
+        $query = "DELETE FROM $this->table WHERE $id_column = :$id_column"; // Certifique-se de que o placeholder corresponda ao nome da coluna
+        return $this->query($query, $data);
     }
 
-    function test(){
-        $query = "select * from users";
-        $result = $this->query($query);
-        
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
+    public function deleteProduto($id, $id_column = 'id'){
+        $data[$id_column] = $id;
+        $query = "UPDATE $this->table SET estado = 'inativo' WHERE $id_column = :id"; // Certifique-se de que o placeholder corresponda ao nome da coluna
+        return $this->query($query, $data);
     }
+    
 
     public function searchByDescription($description)
     {
         $query = "SELECT * FROM $this->table WHERE nome LIKE :description";
         $data = [':description' => "%$description%"];
         return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionProduto($description)
+    {
+        $query = "SELECT * FROM $this->table WHERE nome LIKE :description AND estado = 'ativo'";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionFinDeb($description) {
+        $query = "SELECT * FROM $this->table WHERE descricao LIKE :description AND tipo = 'debito'";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function searchByDescriptionFinCred($description) {
+        $query = "SELECT * FROM $this->table WHERE descricao LIKE :description AND tipo = 'credito'";
+        $data = [':description' => "%$description%"];
+        return $this->query($query, $data);
+    }
+
+    public function findByType($type) {
+        $query = "SELECT * FROM $this->table WHERE tipo = :type";
+        $params = ['type' => $type];
+        return $this->query($query, $params);
     }
 }

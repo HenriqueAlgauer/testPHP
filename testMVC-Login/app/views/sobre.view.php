@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?=menu()?>
+    <?=menuExterno()?>
     <main class="main">
         <section class="hero">
             <div class="hero-title">

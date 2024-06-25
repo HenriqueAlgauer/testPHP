@@ -11,20 +11,28 @@ class Produto_adicionar{
         }
         $produto_adicionar = new Produtos;
 
-        $this->view('produto_adicionar');
-
         if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-            $values = array(
-                'nome' => $_POST['nome'],
-                'preco' => floatval($_POST['preco']),
-                'estoque' => intval($_POST['estoque'])
-            );
+            $nome = $_POST['nome'];
+            $preco = floatval($_POST['preco']);
+            $estoque = intval($_POST['estoque']);
 
-            
-            $produto_adicionar->insert($values);
+            if ($estoque > 0) {
+                $values = array(
+                    'nome' => $nome,
+                    'preco' => $preco,
+                    'estoque' => $estoque
+                );
 
-            header("Location: " . ROOT . "/produto");
+                $produto_adicionar->insert($values);
+                header("Location: " . ROOT . "/produto");
+            } else {
+                $error = "O estoque precisa ser maior que 0.";
+                $this->view('produto_adicionar', ['error' => $error]);
+                return;
+            }
+        }else{
+            $this->view('produto_adicionar');
         }
     }
 }

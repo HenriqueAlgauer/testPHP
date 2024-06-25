@@ -3,7 +3,6 @@
 class Register{
 
     use Controller;
-
     
     public function index(){
 
@@ -12,6 +11,8 @@ class Register{
             $user = new User;
             
             if($user->validate($_POST)){
+                $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                
                 $user->insert($_POST);
                 redirect('login');
             }

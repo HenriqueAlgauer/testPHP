@@ -19,7 +19,9 @@
             <?php if (!empty($errors)): ?>
             <ul>
                 <?php foreach ($errors as $error): ?>
-                <li><?php echo htmlspecialchars($error); ?></li>
+                <div class="alert alert-danger">
+                    <p><?php echo htmlspecialchars($error); ?></p>
+                </div>
                 <?php endforeach; ?>
             </ul>
             <?php endif; ?>
