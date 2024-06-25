@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <a href="index.php">Home</a>
     <h2>Criar Produto</h2>
     <?php if (!empty($message)): ?>
     <p><?= $message ?></p>
