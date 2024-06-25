@@ -2,30 +2,36 @@
 require 'db.php';
 session_start();
 
+$message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = 'SELECT * FROM users WHERE username = :username';
-    $statement = $pdo->prepare($sql);
-    $statement->execute([':username' => $username]);
-    $user = $statement->fetch(PDO::FETCH_OBJ);
-
-    if ($user && password_verify($password, $user->password)) {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['username'] = $user->username;
-
-        if (!empty($_POST['remember'])) {
-            setcookie('username', $username, time() + (10 * 365 * 24 * 60 * 60));
-            setcookie('password', $password, time() + (10 * 365 * 24 * 60 * 60));
-        } else {
-            setcookie('username', '');
-            setcookie('password', '');
-        }
-
-        header("Location: dashboard.php");
+    if (empty($username) || empty($password)) {
+        $message = 'Por favor, preencha todos os campos.';
     } else {
-        $message = 'Login inválido. Por favor, tente novamente.';
+        $sql = 'SELECT * FROM users WHERE username = :username';
+        $statement = $pdo->prepare($sql);
+        $statement->execute([':username' => $username]);
+        $user = $statement->fetch(PDO::FETCH_OBJ);
+
+        if ($user && password_verify($password, $user->password)) {
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['username'] = $user->username;
+
+            if (!empty($_POST['remember'])) {
+                setcookie('username', $username, time() + (10 * 365 * 24 * 60 * 60));
+                setcookie('password', $password, time() + (10 * 365 * 24 * 60 * 60));
+            } else {
+                setcookie('username', '');
+                setcookie('password', '');
+            }
+
+            header("Location: dashboard.php");
+        } else {
+            $message = 'Login inválido. Por favor, tente novamente.';
+        }
     }
 }
 ?>
