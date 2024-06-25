@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=crud_db;port=3306';
 $username = 'root'; 
-$password = 'hhma2005'; 
+$password = '1234'; 
 
 try {
     $pdo = new PDO($dsn, $username, $password);
